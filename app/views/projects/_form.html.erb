@@ -1,0 +1,30 @@
+<% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@project.errors.count, "error") %> prohibited
+        this project from being saved:
+      </h2>
+      <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= form_for @project do |f| %>
+  <p>
+    <%= f.label :Project_name%><br>
+    <%= f.text_field :project_name, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :Client %><br>
+    <%= f.text_field :client, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :Description %><br>
+    <%= f.text_area :description, autofocus: true %>
+  </p>
+  <p>
+    <%= f.submit :submit%>
+  </p>
+<% end %>

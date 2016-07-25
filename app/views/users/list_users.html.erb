@@ -1,0 +1,14 @@
+<table>
+	<tr>
+		<td>Username</td>
+		<td>Name</td>
+		<td>Location</td>
+	</tr>
+	<% @user.each do |user| %>
+	<tr>
+		<td><%= user.user_name %></td>
+		<td><%= user.first_name %> <%= user.last_name %></td>
+		<td><%= user.place %></td>
+	</tr>
+	<% end %>
+</table>
