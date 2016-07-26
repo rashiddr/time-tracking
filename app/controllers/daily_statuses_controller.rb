@@ -1,4 +1,7 @@
 class DailyStatusesController < ApplicationController
+	def index
+		@daily_status=DailyStatus.where(user_id: current_user.id).all
+	end
 	def new
 		@daily_status=  DailyStatus.new()
 		@project_list = Project.all()
