@@ -50,5 +50,12 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
+<script>
+    $( function() {
+      $( "#user_dob" ).datepicker({
+              changeMonth:true,
+              changeYear:true,
+      });
+    } );
+  </script>
 <%= render "devise/shared/links" %>

@@ -1,3 +1,6 @@
 class DailyStatusController < ApplicationController
-	project_list=Project.find(:all,:select => 'project_name');
+	def new
+		@daily_status=  DailyStatus.new()
+		@project_list = Project.all()
+	end
 end

@@ -6,9 +6,10 @@
 	</tr>
 	<% @user.each do |user| %>
 	<tr>
-		<td><%= user.user_name %></td>
+		<td><%= user.username %></td>
 		<td><%= user.first_name %> <%= user.last_name %></td>
 		<td><%= user.place %></td>
+		<td><%= link_to 'Show', show_user_path(user) %></td>
 	</tr>
 	<% end %>
 </table>
