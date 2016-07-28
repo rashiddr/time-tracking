@@ -1,0 +1,2 @@
+      invoke  active_record
+   identical    db/migrate/20160727094314_add_verified_to_daily_status.rb

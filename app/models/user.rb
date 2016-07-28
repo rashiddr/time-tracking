@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_birthday :dob
   has_many:projects
   has_many:daily_statuses
   has_many:comments

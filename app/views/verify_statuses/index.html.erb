@@ -1,0 +1,21 @@
+<table>
+	<tr>
+		<td>Date</td>
+		<td>Name</td>
+		<td>Project</td>
+		<td>Duration</td>
+		<td>Activity</td>
+		<td>Created at</td>
+	</tr>
+	<%@daily_status.each do |daily_status| %>
+	<tr>
+		<td><%= daily_status.status_date %></td> 
+		<td><%= daily_status.user.first_name %>  <%= daily_status.user.last_name %></td>
+		<td><%= daily_status.project.project_name %></td>
+		<td><%= daily_status.duration %></td>
+		<td><%= daily_status.work_done %></td>
+		<td><%= daily_status.created_at %></td>
+		<td><%= link_to 'Mark as Read', verify_status_path(daily_status), :method=> :put %></td>
+	</tr>
+<% end %>
+</table>

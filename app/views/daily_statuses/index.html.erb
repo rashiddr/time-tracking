@@ -9,7 +9,7 @@
 	<% @daily_status.each do |status| %>
 	<tr>
 		<td><%= status.status_date %></td>
-		<td><%= status.project_id %></td>
+		<td><%= status.project.project_name%></td>
 		<td><%= status.duration %></td>
 		<td><%= status.work_done %></td>
 		<td><%= link_to 'Show', daily_status_path(status) %></td>

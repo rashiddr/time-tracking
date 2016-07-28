@@ -1,0 +1,44 @@
+<% if @daily_status.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@daily_status.errors.count, "error") %> prohibited
+        this from being saved:
+      </h2>
+      <ul>
+        <% @daily_status.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+<h3>Status Report</h3>
+<%= form_for @daily_status do |f| %>
+  <p>
+    <%= f.label :Date%><br>
+    <%= f.date_field :status_date, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :Project %><br>
+    <%= f.collection_select(:project_id, Project.all, :id, :project_name) %><br/>
+  </p>
+  <p>
+    <%= f.label :Duration %><br>
+    <%= f.number_field :duration, in: 1.0..20.0, step: 0.5, :value =>'8',autofocus: true  %>
+  </p>
+  <p>
+    <%= f.label :Activities %><br>
+    <%= f.text_area :work_done, autofocus: true %>
+  </p>
+  <p>
+    <%= f.submit :submit%>
+  </p>
+<% end %>
+<script>
+    $( function() {
+      $( "#daily_status_status_date" ).datepicker({
+              changeMonth:true,
+              changeYear:true,
+              dateFormat:"dd-mm-yy"
+      });
+    } );
+  </script>

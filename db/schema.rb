@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722071609) do
+ActiveRecord::Schema.define(version: 20160727133311) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "daily_status_id"
@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20160722071609) do
     t.integer  "project_id"
     t.integer  "duration"
     t.text     "work_done",   limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.boolean  "checked",                   default: false
   end
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

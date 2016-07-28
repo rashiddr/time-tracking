@@ -40,6 +40,9 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.0)
     bcrypt (3.1.11)
+    birthday (0.3.1)
+      activerecord
+      activesupport
     builder (3.2.2)
     byebug (9.0.5)
     coffee-rails (4.2.1)
@@ -167,6 +170,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  birthday (~> 0.3.0)
   byebug
   coffee-rails (~> 4.2)
   devise
