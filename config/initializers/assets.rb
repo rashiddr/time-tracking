@@ -4,6 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( jquery-ui.css )
 Rails.application.config.assets.precompile += %w( jquery-ui.js )
+Rails.application.config.assets.precompile += %w( autocomplete-rails.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

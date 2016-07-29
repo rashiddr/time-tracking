@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :daily_statuses
   resources :projects
   resources :birthdays
-  resources :verify_statuses
+  resources :verify_statuses do
+  	get :autocomplete_user_first_name, :on => :collection
+  end
   devise_for :users
   get 'users/list_users', to: 'users#list_users', as: 'list_users'
   get '/users/:id', to: 'users#show', as: 'show_user'

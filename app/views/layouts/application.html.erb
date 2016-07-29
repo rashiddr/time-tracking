@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Time Tracking</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'styles', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'jquery-ui', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'jquery-ui', 'data-turbolinks-track': 'reload' %>
-
+    <%= javascript_include_tag "autocomplete-rails.js" %>
   </head>
 
   <body>
@@ -23,7 +25,9 @@
       </div>
       <% end %>
   </header>
+  <div class="container">
     <%= yield %>
+  </div>
   <footer>
   </footer>  
   </body>

@@ -1,4 +1,14 @@
- <%@user.each do |birthday_today| %>
+<h3>Recent Birthdays</h3>
+<%@user_birthday_today.each do |user| %>
+		<p>Today is <%= user.first_name %> <%= user.last_name %>'s Birthday</p>
 
-		<p>Today is <td><%= birthday_today.id %></td> <%= birthday_today.id %>'s Birthday</p>
+<% end %>
+<%@user_birthday_tomorrow.each do |user| %>
+		<p>Tomorrow is <%= user.first_name %> <%= user.last_name %>'s Birthday</p>
+
+<% end %>
+<%@user_birthday_recent.each do |user| %>
+		<% @bday = user.dob %>
+		<p><%= @bday.strftime("%B %d") %> is <%= user.first_name %> <%= user.last_name %>'s Birthday</p>
+		
 <% end %>
