@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :daily_statuses
+  resources :admin
   resources :projects
   resources :birthdays
+  resources :list_projects
   resources :verify_statuses do
   	get :autocomplete_user_first_name, :on => :collection
   end

@@ -1,13 +1,16 @@
 <h3>Recent Birthdays</h3>
 <%@user_birthday_today.each do |user| %>
+<%= image_tag user.user_pic.url(:thumb) %>
 		<p>Today is <%= user.first_name %> <%= user.last_name %>'s Birthday</p>
 
 <% end %>
 <%@user_birthday_tomorrow.each do |user| %>
+<%= image_tag user.user_pic.url(:thumb) %>
 		<p>Tomorrow is <%= user.first_name %> <%= user.last_name %>'s Birthday</p>
 
 <% end %>
 <%@user_birthday_recent.each do |user| %>
+<%= image_tag user.user_pic.url(:thumb) %>
 		<% @bday = user.dob %>
 		<p><%= @bday.strftime("%B %d") %> is <%= user.first_name %> <%= user.last_name %>'s Birthday</p>
 		

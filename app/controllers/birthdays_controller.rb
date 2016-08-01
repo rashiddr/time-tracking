@@ -1,4 +1,5 @@
 class BirthdaysController < ApplicationController
+	
 	def index
 		@user_birthday_today=User.dob_today
 		@user_birthday_tomorrow=User.find_dobs_for(Date.today + 1.days)

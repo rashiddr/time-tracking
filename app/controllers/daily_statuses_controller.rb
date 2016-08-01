@@ -1,6 +1,7 @@
 class DailyStatusesController < ApplicationController
+	before_filter :authenticate_user!
 	def index
-		@daily_status=DailyStatus.includes(:project).where(user_id: current_user.id).all
+		@daily_status=DailyStatus.includes(:project).where(user_id: current_user.id).all.order("created_at DESC")
 	end
 	def new
 		@daily_status=  DailyStatus.new()

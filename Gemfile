@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'paperclip'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'rails4-autocomplete'

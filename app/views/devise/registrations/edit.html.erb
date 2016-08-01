@@ -23,6 +23,11 @@
     <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
   </div>
   <div class="field">
+    <%= image_tag @user.user_pic.url(:thumb) %>
+    <%= f.label :Profile_Photo %><br />
+    <%= f.file_field :user_pic, autofocus: true %>
+  </div>
+  <div class="field">
     <%= f.label :Username %><br />
     <%= f.text_field :username, autofocus: true %>
   </div>

@@ -10,6 +10,7 @@
     <%= f.label :Lastname %><br />
     <%= f.text_field :last_name, autofocus: true %>
   </div>
+   
   <div class="field">
     <%= f.label :Location %><br />
     <%= f.text_field :place, autofocus: true %>
@@ -20,7 +21,11 @@
   </div>
   <div class="field">
    <%= f.label :role %><br />
-    <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+   <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :Profile_Photo %><br />
+    <%= f.file_field :user_pic, autofocus: true %>
   </div>
   <div class="field">
     <%= f.label :username %><br />
