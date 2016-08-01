@@ -4,11 +4,15 @@ Rails.application.routes.draw do
   resources :projects
   resources :birthdays
   resources :list_projects
+  resources :trainings
+  resources :list_trainings
+  resources :admin_panels
   resources :verify_statuses do
   	get :autocomplete_user_first_name, :on => :collection
   end
   devise_for :users
   get 'users/list_users', to: 'users#list_users', as: 'list_users'
+  get 'users/new_joiners', to: 'users#new_joiners', as: 'new_joiners'
   get '/users/:id', to: 'users#show', as: 'show_user'
   root :to =>'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

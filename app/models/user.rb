@@ -19,4 +19,8 @@ class User < ApplicationRecord
   validates :place, presence:true, length: { maximum:15 }
   validates :dob, presence:true
   validates :username, presence:true, uniqueness: true, length: { maximum:15 }
-end
+  validates_date :dob, :on_or_before => lambda { Date.current - 15.years},
+                 :on_or_before_message => 'must be atleast 15 years ago'
+
+  end
+                 

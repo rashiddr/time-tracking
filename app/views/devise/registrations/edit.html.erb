@@ -68,7 +68,10 @@
       $( "#user_dob" ).datepicker({
               changeMonth:true,
               changeYear:true,
-              dateFormat:"dd-mm-yy"
+              dateFormat:"dd-mm-yy",
+              yearRange: '1960:2005',
+              showButtonPanel: true,
+              maxDate:('-15Y +30D')
       });
     } );
   </script>

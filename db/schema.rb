@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729093619) do
+ActiveRecord::Schema.define(version: 20160801042636) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "daily_status_id"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20160729093619) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "project_name"
+  end
+
+  create_table "trainings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "trainer"
+    t.date     "training_date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "location"
   end
 
   create_table "user_projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -69,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160729093619) do
     t.string   "user_pic_content_type"
     t.integer  "user_pic_file_size"
     t.datetime "user_pic_updated_at"
+    t.date     "join_date"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

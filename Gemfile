@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'validates_timeliness'
 gem 'paperclip'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

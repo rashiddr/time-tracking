@@ -1,0 +1,43 @@
+<% if @training.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@training.errors.count, "error") %> prohibited
+        this from being saved:
+      </h2>
+      <ul>
+        <% @training.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= form_for @training do |f| %>
+  <p>
+    <%= f.label :Topic%><br>
+    <%= f.text_field :title, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :Trainer %><br>
+    <%= f.text_field :trainer, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :Training_date %><br>
+    <%= f.date_field :training_date, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :Location %><br>
+    <%= f.text_field :location, autofocus: true %>
+  </p>
+  <p>
+    <%= f.submit :submit%>
+  </p>
+<% end %>
+<script>
+    $( function() {
+      $( "#training_training_date" ).datepicker({
+              changeMonth:true,
+              changeYear:true,
+              dateFormat:"dd-mm-yy"
+      });
+    } );
+  </script>
