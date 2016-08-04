@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <h3 class="panel-title">Recent Birthdays</h3>
+    </div>
+    <div class="panel-body">
+		    <div class="row">
+				<%@user_birthday_today.each do |user| %>
+					<div class="col-md-6">
+						<%= image_tag user.user_pic.url(:thumb) %>
+						<%= user.first_name %> <%= user.last_name %>
+						<% @bday = user.dob %>
+						<p>Birthday Today</p>
+					</div>
+				<% end %>
+				<%@user_birthday_tomorrow.each do |user| %>
+					<div class="col-md-6">
+						<%= image_tag user.user_pic.url(:thumb) %>
+						<%= user.first_name %> <%= user.last_name %>
+						<% @bday = user.dob %>
+						<p>Birthday Tomorrow</p>
+					</div>
+				<% end %>
+				<%@user_birthday_recent.each do |user| %>
+					<div class="col-md-6">	
+						<%= image_tag user.user_pic.url(:thumb) %>
+						<%= user.first_name %> <%= user.last_name %>
+						<% @bday = user.dob %>
+						<p>Birthday on <%= @bday.strftime("%B %d") %></p>
+					</div>
+				<% end %>
+			</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <h3 class="panel-title">Upcoming Trainings</h3>
+    </div>
+    <% @training.each do |training| %>
+	     <div class="panel panel-default">
+	   	 
+	    	<div class="panel-heading">
+	            <h3 class="panel-title"><%= training.title %></h3>
+	                    <span class="pull-right clickable"><i class="glyphicon glyphicon-minus"></i></span>
+	        </div>
+	        <div class="panel-body">
+	                    <%= training.training_date %> at  <%= training.location %>
+	        </div>
+	    </div>
+	<% end %>
+	
+</div>
+
+

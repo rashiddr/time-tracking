@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <h3 class="panel-title">Latest projects</h3>
+    </div>
+    <ul class="list-group">
+        <% @projects.each do |project| %>
+		<li class="list-group-item"><%= project.project_name %>( <%= project.client %> )</li>
+	<% end %>
+    </ul>
+	
+</div>

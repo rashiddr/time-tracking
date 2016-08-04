@@ -1,4 +1,16 @@
-<% @user.each do |user|%>
-<%= image_tag user.user_pic.url(:thumb) %>
-<p><%= user.first_name %> <%= user.last_name %></p>
-<% end %>
+<div class="panel panel-default">
+	<div class="panel-heading">
+        <h3 class="panel-title">New Joiners</h3>
+    </div>
+    <div class="panel-body">
+		    <% @new_join.each do |user|%>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-6"><%= image_tag user.user_pic.url(:thumb) %></div>
+						<div class="col-md-6"><%= user.first_name %> </div>
+					</div>
+				</div>
+			<% end %>
+	</div>
+</div>
+

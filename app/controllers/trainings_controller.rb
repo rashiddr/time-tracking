@@ -1,6 +1,6 @@
 class TrainingsController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :is_admin
+	before_filter :is_admin, :except => ["list_training"]
 	def index
 		@training=Training.all
 	end
@@ -34,6 +34,9 @@ class TrainingsController < ApplicationController
 		@training=Training.find(params[:id])
 		@training.destroy
 		redirect_to trainings_path
+	end
+	def list_training
+		@training=Training.where(training_date: Date.today..Date.today + 30.days)
 	end
 	private
   	def training_params
