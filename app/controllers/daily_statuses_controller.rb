@@ -2,11 +2,16 @@ class DailyStatusesController < ApplicationController
 	before_filter :authenticate_user!
 	before_filter :is_admin, :only => [:verify_statuses]
 	def index
-		@daily_status=DailyStatus.includes(:project).where(user_id: current_user.id).all.order("created_at DESC")
+		@daily_status=DailyStatus.includes(:project).where(user_id: current_user.id).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+		if current_user.role == "Manager"
+			render layout: "admin_layout"
+		end
 	end
 	def new
 		@daily_status=  DailyStatus.new()
-		@project_list = Project.all()
+		if current_user.role == "Manager"
+			render layout: "admin_layout"
+		end
 	end
 	def create
 		@daily_status= DailyStatus.new(status_params)
@@ -19,6 +24,9 @@ class DailyStatusesController < ApplicationController
 	end
 	def edit
 		@daily_status= DailyStatus.find(params[:id])
+		if current_user.role == "Manager"
+			render layout: "admin_layout"
+		end
 	end
 	def update
 		@daily_status= DailyStatus.find(params[:id]) 
@@ -31,6 +39,9 @@ class DailyStatusesController < ApplicationController
 	def show
 		@daily_status=DailyStatus.find(params[:id])
 		@project=Project.find(@daily_status.project_id)
+		if current_user.role == "Manager"
+			render layout: "admin_layout"
+		end
 	end
 	def status_params
     	params.require(:daily_status).permit(:status_date, :project_name, :duration, :work_done, :project_id, :checked)
@@ -45,5 +56,6 @@ class DailyStatusesController < ApplicationController
 		else
 			@daily_status=DailyStatus.includes(:project,:user).where(status_date: params[:search_date], user_id: params[:user][:user_id] ).order("created_at DESC")
 		end 
+		render layout: "admin_layout"
   	end
 end

@@ -8,13 +8,13 @@ class ApplicationController < ActionController::Base
       redirect_to '/users/sign_in', :notice => "Please sign in as admin "
     end
   end
- #  def after_sign_in_path_for(resource)
- #    if current_user.role == "Manager" 
- #      admin_index_path
- #  	else
- #      session.fetch 'user_return_to',root_path
-	# end
- #  end
+  def after_sign_in_path_for(resource)
+    if current_user.role == "Manager" 
+      admin_index_path
+  	else
+      session.fetch 'user_return_to',root_path
+	end
+   end
   protected
   def configure_permitted_parameters
     added_attrs = [:user_pic, :username, :email, :password, :password_confirmation, :place, :dob, :role, :first_name, :last_name,:remember_me]

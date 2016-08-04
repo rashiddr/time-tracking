@@ -1,19 +1,26 @@
-<table>
-	<tr>
-		<td>Topic</td>
-		<td>Trainer</td>
-		<td>Date</td>
-		<td>Location</td>
-	</tr>
-	<% @training.each do |training| %>
-	<tr>
-		<td><%= training.title %></td>
-		<td><%= training.trainer%></td>
-		<td><%= training.training_date %></td>
-		<td><%= training.location %></td>
-		<td><%= link_to 'Edit',edit_training_path(training) %></td>
-		<td><%= link_to 'Delete',training_path(training), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	</tr>
-	<% end %>
+<div class="col-md-12"><h2>Trainings</h2></div>
+
+
+<table class="table table-hover table-bordered">
+	<thead class="thead-default">
+		<tr>
+			<td>Topic</td>
+			<td>Trainer</td>
+			<td>Date</td>
+			<td>Location</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @training.each do |training| %>
+			<tr>
+				<td><%= training.title %></td>
+				<td><%= training.trainer%></td>
+				<td><%= training.training_date %></td>
+				<td><%= training.location %></td>
+				<td><%= link_to 'Edit',edit_training_path(training) %></td>
+				<td><%= link_to 'Delete',training_path(training), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
-<h4><%= link_to 'Add New Training',new_training_path %></h4>
+<h4><%= link_to 'Add New Training',new_training_path, class: "btn btn-primary" %></h4>

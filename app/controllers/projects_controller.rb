@@ -4,9 +4,12 @@ class ProjectsController < ApplicationController
 	
 	def index
 		@project=Project.all
+		render layout: "admin_layout"
 	end
 	def new 
+		
 		@project=Project.new
+		render layout: "admin_layout"
 	end
 	def create
 		@project = Project.new(project_params)
@@ -18,7 +21,7 @@ class ProjectsController < ApplicationController
   	end
 	def edit
 		@project= Project.find(params[:id])
-				
+		render layout: "admin_layout"		
 	end
 	def update
 		@project= Project.find(params[:id])
@@ -27,9 +30,10 @@ class ProjectsController < ApplicationController
   		else
   			render 'edit'
   		end
-	end
+  	end
 	def show
 		@project=Project.find(params[:id])
+		render layout: "admin_layout"
 	end
 	def destroy
 		@project=Project.find(params[:id])

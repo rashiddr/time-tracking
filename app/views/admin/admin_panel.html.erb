@@ -6,7 +6,7 @@
 	<p><%= user.first_name%> <% user.last_name %></p>
 <% end %>
 <h3>Extend Panel</h3>
-<%= form_tag admin_panels_path, :method => 'get',  class: "form-inline", role:"form"  do %>
+<%= form_tag admin_panel_admin_index_path, :method => 'get',  class: "form-inline", role:"form"  do %>
   <div class="form-group">
       <%= collection_select(:user,:ids, User.where(role: 1), :id, :first_name,include_blank: "Select an employe") %>
   </div>

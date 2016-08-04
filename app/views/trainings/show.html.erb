@@ -1,10 +1,17 @@
-<table>
-<tr>
-<td><%= @training.title %></td>
-<td></td>
-<td><%= @training.trainer %></td>
-<td></td>
-<td><%= @training.training_date %></td>
-</tr>
-</table>
-<%= link_to 'OK',trainings_path%>
+
+
+<div class="row" style="margin-top:30px">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		       <h3 class="panel-title"><%= @training.title %></h3>
+		    </div>
+			<div class="panel-body">
+				<p><strong>Trainer:</strong> <%= @training.trainer %></p>
+				<p><strong>Date:</strong> <%= @training.training_date %></p>
+				<p><strong>Location:</strong> <%= @training.location%></p>
+			</div>
+		</div>
+		<%= link_to 'Back',trainings_path, class:'btn btn-primary'%>
+	</div>
+</div>

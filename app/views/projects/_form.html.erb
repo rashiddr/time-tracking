@@ -10,7 +10,7 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+<% end %>
 <%= form_for @project do |f| %>
   <p>
     <%= f.label :Project_name%><br>
@@ -25,6 +25,6 @@
     <%= f.text_area :description, autofocus: true %>
   </p>
   <p>
-    <%= f.submit :submit%>
+    <%= f.submit :submit, class: 'btn-primary btn-sm'%>
   </p>
 <% end %>

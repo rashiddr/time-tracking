@@ -3,9 +3,11 @@ class TrainingsController < ApplicationController
 	before_filter :is_admin, :except => ["list_training"]
 	def index
 		@training=Training.all
+		render layout: "admin_layout"
 	end
 	def new
 		@training=Training.new()
+		render layout: "admin_layout"
 	end
 	def create
 		@training = Training.new(training_params)
@@ -17,7 +19,7 @@ class TrainingsController < ApplicationController
   	end
 	def edit
 		@training= Training.find(params[:id])
-				
+		render layout: "admin_layout"		
 	end
 	def update
 		@training= Training.find(params[:id])
@@ -29,6 +31,7 @@ class TrainingsController < ApplicationController
 	end
 	def show
 		@training=Training.find(params[:id])
+		render layout: "admin_layout"
 	end
 	def destroy
 		@training=Training.find(params[:id])

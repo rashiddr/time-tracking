@@ -1,20 +1,26 @@
+
 <div class="panel panel-default">
 	<div class="panel-heading">
-        <h3 class="panel-title">Upcoming Trainings</h3>
+        <h3 class="panel-title"><strong>Upcoming Trainings</strong></h3>
     </div>
-    <% @training.each do |training| %>
-	     <div class="panel panel-default">
-	   	 
-	    	<div class="panel-heading">
-	            <h3 class="panel-title"><%= training.title %></h3>
-	                    <span class="pull-right clickable"><i class="glyphicon glyphicon-minus"></i></span>
-	        </div>
-	        <div class="panel-body">
-	                    <%= training.training_date %> at  <%= training.location %>
-	        </div>
-	    </div>
-	<% end %>
-	
+    <div class="panel-group" id="accordion">
+       <% @training.each do |training| %>
+		
+		    <div class="panel panel-default">
+		      	<div class="panel-heading">
+			        <h5 class="panel-title">
+			          <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=training.id%>"><%= training.title %></a>
+			        </h5>
+		      	</div>
+		    	<div id="collapse_<%=training.id%>" class="panel-collapse collapse">
+		    		<div class="panel-body">
+			    		<p>Who: <%= training.trainer %></p>
+			    		<p>When: <%= training.training_date %></p>
+			    		<p>Where: <%= training.location %></p>
+		    		</div>
+				</div>
+		    </div>
+		
+        <% end %>
+    </div>
 </div>
-
-

@@ -19,7 +19,6 @@ Rails.application.routes.draw do
       get 'list_training'
     end
   end
-  resources :admin_panels
   
   devise_for :users
   get 'users/list_users', to: 'users#list_users', as: 'list_users'

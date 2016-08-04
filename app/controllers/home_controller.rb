@@ -2,6 +2,9 @@ class HomeController < ApplicationController
 	  before_filter :authenticate_user!
 	  #&format=json&callback=
 	  def index
+	  	if current_user.role == "Manager"
+      		redirect_to '/admin'
+    	end
 	  	@user=current_user
 	  	@projects=Project.order("created_at DESC").limit(12)
 	  	@new_join=User.order("join_date DESC").limit(12)

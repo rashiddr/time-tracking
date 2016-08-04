@@ -1,18 +1,24 @@
-<table>
-	<tr>
-		<td>Project name</td>
-		<td>Client</td>
-		<td>Description</td>
-	</tr>
+<div class="col-md-12"><h2>Daily Status</h2></div>
+
+<table class="table table-hover table-bordered" >
+	<thead class="thead-default">
+	  <tr>
+		<td><strong>Project name<strong></td>
+		<td><strong>Client<strong></td>
+		<td><strong>Description<strong></td>
+	  </tr>
+	</thead>
+	<tbody>
 	<% @project.each do |project| %>
-	<tr>
-		<td><%= project.project_name %></td>
-		<td><%= project.client %></td>
-		<td><%= project.description %></td>
-		<td><%= link_to 'Show', project_path(project) %></td>
-		<td><%= link_to 'Edit',edit_project_path(project) %></td>
-		<td><%= link_to 'Delete',project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	</tr>
+		<tr>
+			<td><%= project.project_name %></td>
+			<td><%= project.client %></td>
+			<td><%= project.description %></td>
+			<td><%= link_to 'Show', project_path(project) %></td>
+			<td><%= link_to 'Edit',edit_project_path(project) %></td>
+		</tr>
 	<% end %>
+	</tbody>
 </table>
-<h4><%= link_to 'Add Projects',new_project_path %></h4>
+<h4><%= link_to 'Add Projects',new_project_path, class: "btn btn-primary"%></h4>
+
