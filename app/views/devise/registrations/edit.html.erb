@@ -67,11 +67,16 @@
               
           </div>
     <% end %>    
-        
-          
-          
-          
-          
-        
-        
 </div>
+
+<script>
+    $( function() {
+      $( "#user_dob" ).datepicker({
+              changeMonth:true,
+              changeYear:true,
+              dateFormat:"yy-mm-dd",
+              yearRange: '1960:2005',
+              maxDate:('-15Y')
+      });
+    } );
+  </script>

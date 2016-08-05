@@ -12,7 +12,7 @@ class AdminController < ApplicationController
 		@user_birthday_recent=User.find_dobs_for(Date.today + 2.days, Date.today + 15.days)
 		render layout: "admin_layout"
 	end
-	def admin_panel
+	def admin_panel #to manage admin panels
 	
 		if(!params[:user].blank?)
 			User.where(id: params[:user][:ids]).update_all(role: 0)

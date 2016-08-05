@@ -38,7 +38,7 @@ class TrainingsController < ApplicationController
 		@training.destroy
 		redirect_to trainings_path
 	end
-	def list_training
+	def list_training #list latest trainings
 		@training=Training.where(training_date: Date.today..Date.today + 30.days)
 	end
 	private

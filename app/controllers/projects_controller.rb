@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
 		@project.destroy
 		redirect_to projects_path
 	end
-	def latest_projects
+	def latest_projects #list latest projects
 		@projects=Project.order("created_at DESC").limit(12)
 	end
 	

@@ -46,7 +46,7 @@ class DailyStatusesController < ApplicationController
 	def status_params
     	params.require(:daily_status).permit(:status_date, :project_name, :duration, :work_done, :project_id, :checked)
   	end
-  	def verify_statuses
+  	def verify_statuses #manager to view daily status of all employe
   		if(params[:search_date].blank? && params[:user].blank?)
 			@daily_status=DailyStatus.includes(:project,:user).where(status_date: Date.today - 1.days).order("created_at DESC")
 		elsif(params[:search_date].blank?)

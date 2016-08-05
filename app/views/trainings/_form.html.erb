@@ -14,19 +14,19 @@
 <%= form_for @training do |f| %>
   <p>
     <%= f.label :Topic%><br>
-    <%= f.text_field :title, autofocus: true %>
+    <%= f.text_field :title, autofocus: true, :required => true %>
   </p>
   <p>
     <%= f.label :Trainer %><br>
-    <%= f.text_field :trainer, autofocus: true %>
+    <%= f.text_field :trainer, autofocus: true, :required => true %>
   </p>
   <p>
     <%= f.label :Training_date %><br>
-    <%= f.date_field :training_date, autofocus: true %>
+    <%= f.date_field :training_date, autofocus: true, :required => true %>
   </p>
   <p>
     <%= f.label :Location %><br>
-    <%= f.text_field :location, autofocus: true %>
+    <%= f.text_field :location, autofocus: true, :required => true %>
   </p>
   <p>
     <%= f.submit :submit, class: 'btn-primary btn-sm'%>
@@ -37,7 +37,7 @@
       $( "#training_training_date" ).datepicker({
               changeMonth:true,
               changeYear:true,
-              dateFormat:"dd-mm-yy"
+              dateFormat:"yy-mm-dd"
       });
     } );
   </script>
