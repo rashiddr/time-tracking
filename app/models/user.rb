@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates_with AttachmentPresenceValidator, attributes: :user_pic
   validates_with AttachmentSizeValidator, attributes: :user_pic, less_than: 3.megabytes
   validates :first_name, presence: true, length: { maximum:15 }
-  validates :first_name, length: { maximum:15 }
+  validates :last_name, length: { maximum:15 }
   validates :place, presence:true, length: { maximum:15 }
   validates :dob, presence:true
   validates :username, presence:true, uniqueness: true, length: { maximum:15 }

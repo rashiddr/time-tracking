@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Time Tracking</title>
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <!-- <link rel="shortcut icon" type="image/png" href="images/favicon.png"> -->
     <%= stylesheet_link_tag    'jClocksGMT', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
 
@@ -115,8 +115,12 @@
             </ul>
     </nav>
 <% end %>
-<div class="col-md-10">
-    <%= yield %> 
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-10">
+        <%= yield %> 
+    </div>
+</div>
 </div>
   </body>
 </html>

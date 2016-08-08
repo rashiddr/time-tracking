@@ -3,14 +3,18 @@
         <h3 class="panel-title"><strong>New Joiners</strong></h3>
     </div>
     <div class="panel-body">
+    	<div class="row">
 		    <% @new_join.each do |user|%>
 				<div class="col-md-4">
 					<div class="row">
-						<div class="col-md-6"><%= image_tag user.user_pic.url(:thumb) %></div>
-						<div class="col-md-6"><%= user.first_name %> </div>
+						<div class="col-md-12"><%= image_tag user.user_pic.url(:thumb) %>
+							
+						</div>
+						<div class="col-md-12"><%= user.first_name %> </div>
 					</div>
 				</div>
 			<% end %>
+		</div>
 	</div>
 </div>
 
