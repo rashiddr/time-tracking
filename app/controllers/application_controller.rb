@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
       admin_index_path
   	else
       session.fetch 'user_return_to',root_path
-	end
-   end
+	 end
+  end
   protected
   def configure_permitted_parameters
     added_attrs = [:user_pic, :username, :email, :password, :password_confirmation, :place, :dob, :role, :first_name, :last_name,:remember_me]

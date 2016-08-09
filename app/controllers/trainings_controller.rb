@@ -1,13 +1,11 @@
 class TrainingsController < ApplicationController
-	before_filter :authenticate_user!
-	before_filter :is_admin, :except => ["list_training"]
+	before_action :authenticate_user!
+	before_action :is_admin, :except => ["list_training"]
 	def index
 		@training=Training.all
-		render layout: "admin_layout"
 	end
 	def new
 		@training=Training.new()
-		render layout: "admin_layout"
 	end
 	def create
 		@training = Training.new(training_params)
@@ -18,8 +16,7 @@ class TrainingsController < ApplicationController
   		end
   	end
 	def edit
-		@training= Training.find(params[:id])
-		render layout: "admin_layout"		
+		@training= Training.find(params[:id])	
 	end
 	def update
 		@training= Training.find(params[:id])
@@ -31,7 +28,6 @@ class TrainingsController < ApplicationController
 	end
 	def show
 		@training=Training.find(params[:id])
-		render layout: "admin_layout"
 	end
 	def destroy
 		@training=Training.find(params[:id])
@@ -39,7 +35,7 @@ class TrainingsController < ApplicationController
 		redirect_to trainings_path
 	end
 	def list_training #list latest trainings
-		@training=Training.where(training_date: Date.today..Date.today + 30.days)
+		@training=Training.latest_training
 	end
 	private
   	def training_params

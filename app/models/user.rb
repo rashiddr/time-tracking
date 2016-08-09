@@ -20,6 +20,11 @@ class User < ApplicationRecord
   validates :username, presence:true, uniqueness: true, length: { maximum:15 }
   validates_date :dob, :on_or_before => lambda { Date.current - 15.years},
                  :on_or_before_message => 'must be atleast 15 years ago'
-
+  def self.new_joiners
+    order("created_at DESC").limit(12)
   end
+  def self.birthday_ordered_asc
+    find_dobs_for(Date.today, Date.today + 15.days).order("MONTH(dob) ASC","DAY(dob) ASC")
+  end  
+end
                  

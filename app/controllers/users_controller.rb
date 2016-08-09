@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :authenticate_user!
+	before_action :authenticate_user!
 	def list_users
 		@user=User.all
 	end
@@ -7,11 +7,9 @@ class UsersController < ApplicationController
 		@user=User.find(params[:id])
 	end
 	def new_joiners
-		@new_join=User.order("join_date DESC").limit(12)
+		@new_join=User.new_joiners
 	end
 	def birthdays
-		@user_birthday_today=User.dob_today
-		@user_birthday_tomorrow=User.find_dobs_for(Date.today + 1.days)
-		@user_birthday_recent=User.find_dobs_for(Date.today + 2.days, Date.today + 15.days)
+		@user_birthday_recent=User.birthday_ordered_asc
 	end
 end

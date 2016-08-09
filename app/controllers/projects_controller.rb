@@ -1,15 +1,13 @@
 class ProjectsController < ApplicationController
-	before_filter :authenticate_user!
-	before_filter :is_admin, :except => ["latest_projects"]
+	before_action :authenticate_user!
+	before_action :is_admin, except: "latest_projects"
 	
 	def index
 		@project=Project.all
-		render layout: "admin_layout"
 	end
 	def new 
 		
 		@project=Project.new
-		render layout: "admin_layout"
 	end
 	def create
 		@project = Project.new(project_params)
@@ -20,8 +18,7 @@ class ProjectsController < ApplicationController
   		end
   	end
 	def edit
-		@project= Project.find(params[:id])
-		render layout: "admin_layout"		
+		@project= Project.find(params[:id])		
 	end
 	def update
 		@project= Project.find(params[:id])
@@ -33,7 +30,6 @@ class ProjectsController < ApplicationController
   	end
 	def show
 		@project=Project.find(params[:id])
-		render layout: "admin_layout"
 	end
 	def destroy
 		@project=Project.find(params[:id])
@@ -41,7 +37,7 @@ class ProjectsController < ApplicationController
 		redirect_to projects_path
 	end
 	def latest_projects #list latest projects
-		@projects=Project.order("created_at DESC").limit(12)
+		@projects=Project.latest_projects
 	end
 	
 	private
