@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   get 'users/new_joiners', to: 'users#new_joiners', as: 'new_joiners'
   get 'users/birthdays', to: 'users#birthdays', as: 'birthdays'
   get '/users/:id', to: 'users#show', as: 'show_user'
-  root :to =>'home#index'
+  root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

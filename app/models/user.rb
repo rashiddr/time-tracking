@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  acts_as_birthday :dob
+  after_initialize :default_values
+  acts_as_birthday :dob #for birthday
   has_many:projects
   has_many:daily_statuses
   has_many:comments
@@ -8,7 +9,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,:confirmable
   enum role: [:Manager, :employe]
   validates :user_pic, attachment_presence: true
   validates_with AttachmentPresenceValidator, attributes: :user_pic
@@ -26,5 +27,15 @@ class User < ApplicationRecord
   def self.birthday_ordered_asc
     find_dobs_for(Date.today, Date.today + 15.days).order("MONTH(dob) ASC","DAY(dob) ASC")
   end  
+  def self.add_admins(user_id)
+    where(id: user_id).update_all(role: 0)
+  end
+  def self.list_admins
+    where(role: 0)
+  end
+  private
+    def default_values
+      self.role ||= "employe"
+    end
 end
                  

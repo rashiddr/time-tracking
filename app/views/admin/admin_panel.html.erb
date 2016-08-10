@@ -1,15 +1,19 @@
+<div class="row">
+	<div class="col-md-12"><h3>Manager Role</h3></div>
+	<% @user.each do |user|%>
+		<div class="col-md-4">
+			<%= image_tag user.user_pic.url(:thumb) %>
+			<p><%= user.first_name%> <% user.last_name %>(<%= user.email %>)</p>
+		</div>
+	<% end %>
+	<div class="col-md-12">
+		<h3>Extend Panel</h3>
+		<%= form_tag admin_panel_admin_index_path, :method => 'get',  class: "form-inline", role:"form"  do %>
+			  <div class="form-group">
+			      <%= collection_select(:user,:ids, User.where(role: 1), :id, :first_name,include_blank: "Select an employe") %>
+			  </div>
 
-<h3>Manager Role</h3>
-<% @user.each do |user|%>
-	<%= image_tag user.user_pic.url(:thumb) %>
-	<%= user.id %>
-	<p><%= user.first_name%> <% user.last_name %></p>
-<% end %>
-<h3>Extend Panel</h3>
-<%= form_tag admin_panel_admin_index_path, :method => 'get',  class: "form-inline", role:"form"  do %>
-  <div class="form-group">
-      <%= collection_select(:user,:ids, User.where(role: 1), :id, :first_name,include_blank: "Select an employe") %>
-  </div>
-
-   <%= submit_tag "Add" ,class: "btn btn-default" ,:confirm => 'Are you sure adding new manager'%>
-<% end %>
+			  <%= submit_tag "Add" ,class: "btn btn-sm btn-primary" ,:confirm => 'Are you sure adding adding new manager'%>
+		<% end %>
+	</div>
+</div>
