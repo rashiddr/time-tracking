@@ -15,31 +15,33 @@
 
   <body>
     <header>
-        <div class="row"> 
-            <div class="col-md-10 .col-xs-6 ">
-                <%= link_to root_path, :class => "logo_link" do %>
-                    <%= image_tag("logo.png", :alt => "logo", :class => "logo") %>
-                <% end %>
-            </div>
-            <div class="col-md-2 .col-xs-6">
-                <% if user_signed_in? %>
-                    <%= render 'layouts/header_dropdown'%>
-                <% end %>
+        <div class="container-fluid">
+            <div class="row"> 
+                <div class="col-md-10 col-xs-12" >
+                    <%= link_to root_path, :class => "logo_link" do %>
+                        <%= image_tag("logo.png", :alt => "logo", :class => "logo") %>
+                    <% end %>
+                </div>
+                <div class="col-md-2 col-xs-12 pull-right">
+                    <% if user_signed_in? %>
+                        <%= render 'layouts/header_dropdown'%>
+                    <% end %>
+                </div>
             </div>
         </div>
     </header>  
+    <% if user_signed_in? %>
+        <% if current_user.role =='employe'%>
+            <%= render 'layouts/employe_nav'%>
+         <%else%>
+            <%= render 'layouts/admin_nav' %>
+        <% end %>
+    <% end %>
     <div class="container-fluid">
         <div class="row">
-                <% if user_signed_in? %>
-                    <% if current_user.role =='employe'%>
-                        <%= render 'layouts/employe_nav'%>
-                     <%else%>
-                        <%= render 'layouts/admin_nav' %>
-                    <% end %>
-                <% end %>
-            <div class="col-md-10">
+           <div class="col-md-10 col-sm-12 col-xs-12">
                 <%= yield %> 
-             </div>
+            </div>
         </div>
     </div>
 </body>

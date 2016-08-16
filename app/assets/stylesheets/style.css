@@ -21,3 +21,18 @@ footer{
       width:14em;
       height:2em;
     }
+.border-box{
+	padding: 10px 10px 10px 15px;
+}
+.sign-up-button{
+	margin: 20px 0 20px 0;
+}
+.profile-edit{
+	margin: 20px 0 10px 0;
+}
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+input[type="date"]::-webkit-input-placeholder{ 
+    visibility: hidden !important;
+}

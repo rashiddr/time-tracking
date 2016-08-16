@@ -1,56 +1,61 @@
-<h2>Sign up</h2>
- 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="field">
-    <%= f.label :Firstname %><br />
-    <%= f.text_field :first_name, autofocus: true, :required => true%>
-  </div>
-  <div class="field">
-    <%= f.label :Lastname %><br />
-    <%= f.text_field :last_name, autofocus: true, :required => true %>
-  </div>
-   
-  <div class="field">
-    <%= f.label :Location %><br />
-    <%= f.text_field :place, autofocus: true, :required => true %>
-  </div>
-  <div class="field">
-    <%= f.label :Date_of_Birth %><br />
-    <%= f.date_field(:dob, autofocus: true, :required => true) %>
-  </div>
-  <div class="field">
-    <%= f.label :Profile_Photo %><br />
-    <%= f.file_field :user_pic, autofocus: true %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, :required => true %>
-  </div>
+<div class="row">
+    <div class="col-md-12"><h2>Sign up</h2></div>
+     
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="col-md-12">
+            <div class="field">
+              <%= f.label :Firstname %><br />
+              <%= f.text_field :first_name, autofocus: true, :required => true%>
+            </div>
+            <div class="field">
+              <%= f.label :Lastname %><br />
+              <%= f.text_field :last_name, autofocus: true, :required => true %>
+            </div>
+             
+            <div class="field">
+              <%= f.label :Location %><br />
+              <%= f.text_field :place, autofocus: true, :required => true %>
+            </div>
+            <div class="field">
+              <%= f.label :Date_of_Birth %><br />
+              <%= f.date_field(:dob, autofocus: true, :required => true) %>
+            </div>
+            <div class="field">
+              <%= f.label :Profile_Photo %><br />
+              <%= f.file_field :user_pic, autofocus: true %>
+            </div>
+            <div class="field">
+              <%= f.label :username %><br />
+              <%= f.text_field :username, autofocus: true, :required => true %>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, :required => true %>
-  </div>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, :required => true %>
+            </div>
 
- 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", :required => true %>
-  </div>
+           
+            <div class="field">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", :required => true %>
+            </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", :required => true %>
-  </div>
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off", :required => true %>
+            </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+            <div class="actions sign-up-button">
+              <%= f.submit "Sign up",class: 'btn btn-sm btn-primary' %>
+            </div>
+            <%= render "devise/shared/links" %>
+        </div>
+    <% end %>
+</div>
 <script>
     $( function() {
       $( "#user_dob" ).datepicker({
@@ -61,5 +66,4 @@
               maxDate:('-15Y')
       });
     } );
-  </script>
-<%= render "devise/shared/links" %>
+</script>

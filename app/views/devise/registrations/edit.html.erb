@@ -4,67 +4,72 @@
     </div>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
-
-          <div class="col-md-4">
-              <div class="field">
+          <div class="col-md-11">
+            <div class="row">
+              <div class="field col-md-6 profile-edit">
                 <%= f.label :First_name %><br />
-                <%= f.text_field :first_name, autofocus: true %>
+                <%= f.text_field :first_name, autofocus: true,class:'form-control' %>
               </div>
-              <div class="field">
+              <div class="field col-md-6 profile-edit">
+                  <%= f.label :Last_name %><br />
+                  <%= f.text_field :last_name, autofocus: true,class:'form-control' %>
+              </div>
+              <div class="field col-md-6 profile-edit">
+                <%= f.label :Location %><br />
+                <%= f.text_field :place, autofocus: true,class:'form-control' %>
+              </div>
+              <div class="field col-md-6 profile-edit">
                 <%= f.label :Date_of_Birth %><br />
-                <%= f.date_field :dob, autofocus: true %>
+                <%= f.date_field :dob, autofocus: true,class:'form-control'%>
               </div>
-              <div class="field">
+              <div class="field col-md-6 profile-edit">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <%= f.label :Profile_Photo %><br/>
+                      </div>
+                      <div class="col-md-6">
+                        <%= f.file_field :user_pic, autofocus: true,class:'form-control' %>
+                      </div>
+                      <div class="col-md-6">
+                        <%= image_tag @user.user_pic.url(:thumb) %>
+                      </div>   
+                  </div>
+              </div>
+              <div class="field col-md-6 profile-edit">
                 <%= f.label :Username %><br />
-                <%= f.text_field :username, autofocus: true %>
+                <%= f.text_field :username, autofocus: true,class:'form-control' %>
               </div>
-              <div class="field">
+              <div class="field col-md-6 profile-edit">
                 <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true %>
+                <%= f.email_field :email, autofocus: true,class:'form-control'%>
               </div>
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                   <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
               <% end %>
-              <div class="field">
+              <div class="field col-md-6 profile-edit">
                 <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-                <%= f.password_field :password, autocomplete: "off" %>
+                <%= f.password_field :password, autocomplete: "off",class:'form-control' %>
                 <% if @minimum_password_length %>
-                  <br />
                   <em><%= @minimum_password_length %> characters minimum</em>
                 <% end %>
               </div>
-              <div class="field">
+              <div class="field col-md-6 profile-edit">
                 <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                <%= f.password_field :password_confirmation, autocomplete: "off",class:'form-control'%>
               </div>
-              <div class="field">
-                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-                <%= f.password_field :current_password, autocomplete: "off" %>
+              <div class="field col-md-12 profile-edit">
+                <div class="row">
+                  <div class="col-md-6">
+                      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                      <%= f.password_field :current_password, autocomplete: "off",class:'form-control' %>
+                  </div>
+                </div>
               </div>
 
-              <div class="actions">
-                <%= f.submit "Update" %>
+              <div class="actions field col-md-12">
+                <%= f.submit "Update", class:'btn btn-primary btn-sm'%>
               </div>
-              
-          </div>
-          <div class="col-md-4">
-                <div class="field">
-                    <%= f.label :Last_name %><br />
-                    <%= f.text_field :last_name, autofocus: true %>
-                </div>
-                <div class="field">
-                    
-                    <%= f.label :Profile_Photo %><br />
-                    <%= image_tag @user.user_pic.url(:thumb) %>
-                    <%= f.file_field :user_pic, autofocus: true %>
-               </div>
-               <div class="field">
-                  <%= f.label :Location %><br />
-                  <%= f.text_field :place, autofocus: true %>
-              </div>
-          </div>
-          <div class="col-md-4">
-              
+            </div>
           </div>
     <% end %>    
 </div>
