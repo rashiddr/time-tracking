@@ -6,6 +6,7 @@
 		    </div>
 			<div class="panel-body">
 				<p><strong>Client:</strong> <%= @project.client %></p>
+				<p><strong>Project Manager:</strong> <%= @project.project_head.first_name %> <%= @project.project_head.last_name %></p>
 				<p><strong>Description:</strong> <%= @project.description %></p>
 			</div>
 		</div>

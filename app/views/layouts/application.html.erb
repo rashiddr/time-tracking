@@ -6,37 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Time Tracking</title>
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-    <%= stylesheet_link_tag    'jClocksGMT', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'nav-style', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'jquery-ui', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-   
+    <%= stylesheet_link_tag    'nav-style', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
   <body>
     <header>
-        <%= link_to root_path, :class => "logo_link" do %>
-            <%= image_tag("logo.png", :alt => "logo", :class => "logo") %>
-        <% end %>
-        <% if user_signed_in? %>
-            <%= render 'layouts/header_dropdown'%>
-        <% end %>
-
-    </header>
-    <% if user_signed_in? %>
-        <% if current_user.role =='employe'%>
-            <%= render 'layouts/employe_nav'%>
-        <%else%>
-            <%= render 'layouts/admin_nav' %>
-        <% end %>
-    <% end %>
+        <div class="row"> 
+            <div class="col-md-10 .col-xs-6 ">
+                <%= link_to root_path, :class => "logo_link" do %>
+                    <%= image_tag("logo.png", :alt => "logo", :class => "logo") %>
+                <% end %>
+            </div>
+            <div class="col-md-2 .col-xs-6">
+                <% if user_signed_in? %>
+                    <%= render 'layouts/header_dropdown'%>
+                <% end %>
+            </div>
+        </div>
+    </header>  
     <div class="container-fluid">
         <div class="row">
+                <% if user_signed_in? %>
+                    <% if current_user.role =='employe'%>
+                        <%= render 'layouts/employe_nav'%>
+                     <%else%>
+                        <%= render 'layouts/admin_nav' %>
+                    <% end %>
+                <% end %>
             <div class="col-md-10">
                 <%= yield %> 
              </div>

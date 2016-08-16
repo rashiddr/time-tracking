@@ -1,3 +1,4 @@
+
 <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -11,20 +12,49 @@
       </ul>
     </div>
 <% end %>
-<%= form_for @project do |f| %>
-  <p>
+<%= form_for @project, html:{role: "form",name: "new_project",onsubmit: "return validateForm()"} do |f| %>
+  <div class="form-group">
     <%= f.label :Project_name%><br>
-    <%= f.text_field :project_name, autofocus: true, :required => true %>
-  </p>
-  <p>
+    <%= f.text_field :project_name, autofocus: true, :required => true,class:"input_length1" %>
+  </div>
+  <div class="form-group">
     <%= f.label :Client %><br>
-    <%= f.text_field :client, autofocus: true, :required => true %>
-  </p>
-  <p>
+    <%= f.text_field :client, autofocus: true, :required => true, class:"input_length1" %>
+   </div>
+  <div class="form-group">
+   <%= f.label :Project_manager %><br>
+
+   <%= f.collection_select :project_manager, User.all, :id, :first_name,include_blank:"select an employe"%>
+  </div>
+  <div class="form-group">
     <%= f.label :Description %><br>
-    <%= f.text_area :description, autofocus: true, :required => true %>
-  </p>
-  <p>
-    <%= f.submit :submit, class: 'btn-primary btn-sm'%>
-  </p>
+    <%= f.text_area :description, autofocus: true, :required => true,  size: "60x5" %>
+  </div>
+    <%= f.submit :submit, class: 'btn-primary btn-sm',id:"form_submit"%>
 <% end %>
+<script>
+    $( function() {
+      $( "#project_project_manager" ).selectmenu();
+    } );
+</script>
+<script>
+  function validateForm() {
+      var x = document.forms["new_project"]["project[project_manager]"].value;
+      if (x == null || x == "") {
+          alert("Please select a project manager");
+          return false;
+      }
+  }
+
+  $(document).ready(function () {
+
+      $('#new_project').on('mouseup blur', function () {
+          $('#form_submit').prop('disabled', false);
+      });
+
+}); 
+
+ 
+     
+</script>
+      

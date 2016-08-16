@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :projects do
     collection do
       get 'latest_projects'
+      get 'manage_projects'
+      get 'remove_employe_from_project'
     end
   end
   resources :trainings do

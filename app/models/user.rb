@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   after_initialize :default_values
   acts_as_birthday :dob #for birthday
-  has_many:projects
+  has_many:user_projects
+  has_many:projects, through: :user_projects
   has_many:daily_statuses
   has_many:comments
   has_attached_file :user_pic, styles: { medium: "300x300#", thumb: "100x100#", smallthumb: "34x34#" }, default_url: "/images/:style/missing.png"
@@ -32,6 +33,9 @@ class User < ApplicationRecord
   end
   def self.list_admins
     where(role: 0)
+  end
+  def self.select_available_users(projects_id)#select users who are not already in this projects
+   User.where('id NOT IN (?)',UserProject.select("user_id").where(project_id: projects_id).distinct.pluck(:user_id).presence || [0]) 
   end
   private
     def default_values

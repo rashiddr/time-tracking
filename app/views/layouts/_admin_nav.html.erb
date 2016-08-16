@@ -10,6 +10,10 @@
                         <li><%= link_to "Manage Projects", projects_path%></li>
                         <li class="divider"></li>
                         <li><%= link_to "New Project", new_project_path%>
+                        <%if(Project.exists?(project_manager:current_user.id))%>
+                                <li class="divider"></li>
+                                <li><%= link_to "Manage your projects", manage_projects_projects_path%></li>
+                            <%end%>
                     </ul>
                 </li>            
                 <li class="dropdown">
