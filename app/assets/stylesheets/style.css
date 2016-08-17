@@ -27,8 +27,12 @@ footer{
 .sign-up-button{
 	margin: 20px 0 20px 0;
 }
-.profile-edit{
+.profile-edit,
+.input-padding{
 	margin: 20px 0 10px 0;
+}
+.project-add-button{
+	margin:10px 0 0 10px;
 }
 input::-webkit-calendar-picker-indicator{
     display: none;

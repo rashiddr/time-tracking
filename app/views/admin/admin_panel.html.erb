@@ -1,19 +1,25 @@
 <div class="row">
 	<div class="col-md-12"><h3>Manager Role</h3></div>
 	<% @user.each do |user|%>
-		<div class="col-md-4">
-			<%= image_tag user.user_pic.url(:thumb) %>
-			<p><%= user.first_name%> <% user.last_name %>(<%= user.email %>)</p>
+		<div class="col-md-3 col-sm-4 col-xs-6">
+			<div class="row input-padding">
+				<div class="col-md-12"><%= image_tag user.user_pic.url(:thumb),class:'img-responsive img-thumbnail' %></div>
+				<div class="col-md-12"><%= user.first_name%> <% user.last_name %></div>
+				<div class="col-md-12"><%= user.email %></div>
+			</div>
 		</div>
 	<% end %>
-	<div class="col-md-12">
-		<h3>Extend Panel</h3>
-		<%= form_tag admin_panel_admin_index_path, :method => 'get',  class: "form-inline", role:"form"  do %>
-			  <div class="form-group">
-			      <%= collection_select(:user,:ids, User.where(role: 1), :id, :first_name,include_blank: "Select an employe") %>
-			  </div>
-
-			  <%= submit_tag "Add" ,class: "btn btn-sm btn-primary" ,:confirm => 'Are you sure adding adding new manager'%>
-		<% end %>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12"><h3>Extend Panel</h3></div>
+			<%= form_tag admin_panel_admin_index_path, :method => 'get',  class: "form-inline", role:"form"  do %>
+				  <div class="form-group col-md-2 col-sm-4">
+				      <%= collection_select(:user,:ids, User.where(role: 1), :id, :first_name,{include_blank: "Select an user"},{class:'form-control'}) %>
+				  </div>
+				  <div class="col-md-2 col-sm-6"> 
+				  	<%= submit_tag "Add", data: { confirm: "Are you sure?" },class:'btn btn-primary form-control' %>
+				  </div>
+			<% end %>
+		</div>
 	</div>
 </div>
