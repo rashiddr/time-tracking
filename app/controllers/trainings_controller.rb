@@ -1,6 +1,6 @@
 class TrainingsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :is_admin, :except => ["list_training"]
+	before_action :is_admin, except: [:list_training]
 	def index
 		@training=Training.order("created_at DESC")
 	end

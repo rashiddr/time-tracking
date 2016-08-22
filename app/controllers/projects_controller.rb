@@ -5,8 +5,7 @@ class ProjectsController < ApplicationController
 	def index
 		@project=Project.project_list
 	end
-	def new 
-		
+	def new 	
 		@project=Project.new
 	end
 	def create

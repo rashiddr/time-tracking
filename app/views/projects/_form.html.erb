@@ -37,6 +37,7 @@
     </div>
   <% end %>
 </div>
+<!-- script for submiting form when a project is selected-->
 <script>
   function validateForm() {
       var x = document.forms["new_project"]["project[project_manager]"].value;
@@ -45,16 +46,12 @@
           return false;
       }
   }
-
   $(document).ready(function () {
 
       $('#new_project').on('mouseup blur', function () {
           $('#form_submit').prop('disabled', false);
       });
 
-}); 
-
- 
-     
+});     
 </script>
       

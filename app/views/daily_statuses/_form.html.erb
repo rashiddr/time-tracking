@@ -47,13 +47,14 @@
       </div>
   </div>
   <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-2 col-sm-3">
         <div class="actions">
           <%= f.submit 'submit',class: 'btn-primary btn-sm form-control' %>
         </div>
       </div>
   </div>
 <% end %>
+<!-- Script for Date picker  -->
 <script>
     $( function() {
       $( "#daily_status_status_date" ).datepicker({
@@ -65,6 +66,7 @@
       });
     } );
 </script>
+<!-- Script for Reamining word count  -->
 <script>
       $('textarea').keyup(updateCount);
       $('textarea').keydown(updateCount);
