@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
   
-  devise_for :users
+  devise_for :users,controllers: {registrations: 'registrations'}
   get 'users/list_users', to: 'users#list_users', as: 'list_users'
   get 'users/new_joiners', to: 'users#new_joiners', as: 'new_joiners'
   get 'users/birthdays', to: 'users#birthdays', as: 'birthdays'

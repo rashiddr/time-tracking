@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
       redirect_to '/users/sign_in', :notice => "Please sign in as admin "
     end
   end
+  def after_inactive_sign_up_path_for(resource)
+    new_user_session_path 
+  end
   def after_sign_in_path_for(resource)
     if current_user.role == "Manager" 
       admin_index_path

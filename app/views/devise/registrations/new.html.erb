@@ -32,11 +32,13 @@
               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
               <div class="help-block with-errors"></div>
             </div>
-            <div class="field form-group">
-              <%= f.label :Profile_Photo %><br />
+            <div class="field form-group has-feedback">
+              <%= f.label :Profile_Photo, class: "control-label" %><br />
               <%= f.file_field :user_pic, autofocus: true, class:'form-control',id:'files' %>
               <output id="list"></output>
               <div id="progress_bar"><div class="percent">0%</div></div>
+              <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+              <div class="help-block with-errors"></div>
             </div>
             <div class="field form-group has-feedback">
               <%= f.label :username %><br />
