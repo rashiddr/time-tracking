@@ -32,7 +32,10 @@ class TrainingsController < ApplicationController
 	def destroy
 		@training=Training.find(params[:id])
 		@training.destroy
-		redirect_to trainings_path
+		respond_to do |format|
+      		format.html { redirect_to trainings_path }
+      		format.js   { render :layout => false }
+   		end		
 	end
 	def list_training #list latest trainings
 		@training=Training.latest_training

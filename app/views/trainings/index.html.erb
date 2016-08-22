@@ -21,7 +21,7 @@
 							<td><%= training.training_date %></td>
 							<td><%= training.location %></td>
 							<td><%= link_to ('<span class="glyphicon glyphicon-pencil">Edit</span>').html_safe,edit_training_path(training) %></td>
-							<td><%= link_to ('<span class="glyphicon glyphicon-remove">Delete</span>').html_safe,training_path(training), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<td><%= link_to ('<span class="glyphicon glyphicon-remove">Delete</span>').html_safe,training_path(training), method: :delete, data: { confirm: 'Are you sure?' },remote:true,class:'destroy_training' %></td>
 						</tr>
 					<% end %>
 				</tbody>
