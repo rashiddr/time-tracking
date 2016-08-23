@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :daily_statuses do
     collection do
       get 'verify_statuses'
+      get 'add_status'
     end
   end
   resources :admin do

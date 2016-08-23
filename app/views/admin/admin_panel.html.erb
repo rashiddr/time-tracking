@@ -35,11 +35,10 @@
 	  	data: valuesToSubmit,
 	  	dataType: 'json',
 	  	success: function(result){
-	  		console.log(result);
 	  		$(".admins-list").append("<%= j (render 'new_admin_elements') %>");
-	  		$(".user_photo").attr('src',result.user_pic_url);
-	  		$('.first_name').html(result.first_name);
-	  		$('.email').html(result.email);
+	  		$(".user_photo").last().attr('src',result.user_pic_url);
+	  		$('.first_name').last().html(result.first_name);
+	  		$('.email').last().html(result.email);
 	  		$("#submit-btn").prop('disabled', false);
 	  	}
 	  });

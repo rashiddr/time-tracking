@@ -1,13 +1,12 @@
 
 <div class="row">
-  <div class="col-md-12"><h3>Status Report</h3></div>
   <div class="col-md-12"> 
-    <% if @daily_status.errors.any? %>
+    <% if @status.errors.any? %>
           <h4>
-            <%= pluralize(@daily_status.errors.count, "error") %> prohibited
+            <%= pluralize(@status.errors.count, "error") %> prohibited
             this from being saved:
           </h4>
-          <% @daily_status.errors.full_messages.each do |msg| %>
+          <% @status.errors.full_messages.each do |msg| %>
             <div class="alert alert-danger fade in">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <%= msg %>
@@ -16,7 +15,7 @@
     <% end %>
   </div>
 </div>
-<%= form_for @daily_status do |f| %>
+<%= form_for @status do |f| %>
   <div class="row">
       <div class="col-md-4 col-xs-7 col-sm-5">
           <div class="field form-group">
@@ -46,10 +45,10 @@
         </div>
       </div>
   </div>
-  <div class="row">
+  <div class="row bottom-padding">
       <div class="col-md-2 col-sm-3">
         <div class="actions">
-          <%= f.submit 'submit',class: 'btn-primary btn-sm form-control' %>
+          <%= f.submit 'submit',class: 'btn-primary btn-sm form-control',id:'submit-btn' %>
         </div>
       </div>
   </div>
