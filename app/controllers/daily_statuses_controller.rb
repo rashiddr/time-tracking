@@ -39,7 +39,7 @@ class DailyStatusesController < ApplicationController
 		    if(@daily_status.save)
 	    		render partial: 'new_status'
 	    	else
-	    		result = {status:'failed'}
+	    		result = 'failed'
 	    		render json:result
 	    	end
 		else            # respond to normal request

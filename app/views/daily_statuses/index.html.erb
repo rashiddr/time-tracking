@@ -3,7 +3,7 @@
 	<div class="col-md-12 new-status-form">
 		<%= render 'form' %>
 	</div>
-	<div class="col-md-12 status-index">
+	<div class="col-md-12 status_index" id="status_index">
 		<%= render 'index' %>
 	</div>
 </div>
@@ -19,9 +19,16 @@
 	  	data: valuesToSubmit,
 	  	dataType: 'html',
 	  	success: function(result){
-	  		$(".status_index").append(result);
-	  		$("#submit-btn").prop('disabled', false);
-	  		$('form')[0].reset();
+	  		if(result=='failed'){
+	  			alert("Status for this date and project already exists");
+	  			$("#submit-btn").prop('disabled', false);
+	  			$('form')[0].reset();
+	  		}
+	  		else{
+		  		$("#status_index").prepend(result);
+		  		$("#submit-btn").prop('disabled', false);
+		  		$('form')[0].reset();
+	  		}
 	  	}
 	  });
 	});
