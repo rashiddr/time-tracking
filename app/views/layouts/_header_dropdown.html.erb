@@ -18,7 +18,10 @@
                             <p class="text-left"><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
                             <p class="text-left small"><%= current_user.email %></p>
                             <p class="text-left">
-                                <%= link_to "Edit Profile", edit_user_registration_path, :class => 'btn btn-primary btn-block btn-sm'%>
+                                <%= link_to "Edit Profile", edit_profile_path, :class => 'btn btn-primary btn-block btn-sm'%>
+                            </p>
+                            <p class="text-left">
+                                <%= link_to "Change Password", edit_user_registration_path, :class => 'btn btn-primary btn-block btn-sm'%>
                             </p>
                         </div>
                     </div>

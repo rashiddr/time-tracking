@@ -1,8 +1,8 @@
 class UserProject < ApplicationRecord
 	belongs_to:user
-	belongs_to:project
-	validates :project_id, uniqueness: { scope: [:user_id] }
-	validates :project_id, presence: true
+	belongs_to:project, inverse_of: :user_projects
+	#validates :project_id, uniqueness: { scope: [:user_id] }
+	#validates :project_id, presence: true
 	validates :user_id, presence:true 
 	def self.select_users(proj_id)
 		includes(:user).where(project_id:proj_id).order("created_at DESC")

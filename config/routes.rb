@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   end
   
   devise_for :users,controllers: {registrations: 'registrations'}
+  get 'users/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
+  post 'users/update_profile', to: 'users#update_profile', as: 'update_profile'
   get 'users/list_users', to: 'users#list_users', as: 'list_users'
   get 'users/new_joiners', to: 'users#new_joiners', as: 'new_joiners'
   get 'users/birthdays', to: 'users#birthdays', as: 'birthdays'
