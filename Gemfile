@@ -7,6 +7,8 @@ gem 'rails4-autocomplete'
 gem 'will_paginate', '~> 3.1.0'
 gem 'birthday', '~> 0.3.0'
 gem 'nested_form_fields'
+gem 'delayed_job_active_record'
+gem 'daemons'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 # Use mysql as the database for Active Record

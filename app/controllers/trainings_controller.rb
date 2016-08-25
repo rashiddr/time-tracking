@@ -10,6 +10,7 @@ class TrainingsController < ApplicationController
 	def create
 		@training = Training.new(training_params)
  		if(@training.save)
+ 			SendInvitationMailJob.set(wait: 20.seconds).perform_later(@training)
   			redirect_to @training
   		else
   			render 'new'

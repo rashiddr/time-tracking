@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,:confirmable
+         :recoverable, :rememberable, :trackable, :validatable
   enum role: [:Manager, :employe]
   validates_with AttachmentSizeValidator, attributes: :user_pic, less_than: 3.megabytes
   validates :first_name, presence: true, length: { maximum:15 }
@@ -34,6 +34,9 @@ class User < ApplicationRecord
   end
   def self.select_available_users(projects_id)#select users who are not already in this projects
    User.where('id NOT IN (?)',UserProject.select("user_id").where(project_id: projects_id).distinct.pluck(:user_id).presence || [0]) 
+  end
+  def self.select_trainees
+    order("created_at DESC").limit(5);
   end
   private
     def default_values
