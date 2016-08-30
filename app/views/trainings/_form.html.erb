@@ -18,15 +18,23 @@
     <div class="row">
       <div class="form-group col-md-12">
         <%= f.label :Topic%><br>
-        <%= f.text_field :title, autofocus: true, :required => true, class:'form-control' %>
+        <%= f.text_field :title, autofocus: true, required:true, class:'form-control' %>
       </div>
       <div class="form-group col-md-12">
         <%= f.label :Trainer %><br>
-        <%= f.text_field :trainer, autofocus: true, :required => true, class:'form-control' %>
+        <%= f.text_field :trainer, autofocus: true, required:true, class:'form-control' %>
       </div>
       <div class="form-group col-md-12">
         <%= f.label :Training_date %><br>
-        <%= f.date_field :training_date, autofocus: true, :required => true, class:'form-control' %>
+        <%= f.date_field :training_date, autofocus: true, required:true, class:'form-control' %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= f.label :Time %><br>
+        <%= f.text_field :training_time, autofocus: true, required:true, class:'form-control timepicker' %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= f.label 'Duration(in hours)' %><br>
+        <%= f.number_field :duration, in: 0.5..10, step: 0.25, autofocus: true,required:true, class:'form-control' %>
       </div>
       <div class="form-group col-md-12">
         <%= f.label :Location %><br>
@@ -47,4 +55,5 @@
               minDate:0
       });
     } );
+    $('.timepicker').wickedpicker();
   </script>

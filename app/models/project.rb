@@ -10,7 +10,7 @@ class Project < ApplicationRecord
 	validates :client, presence:true
 	validates :project_manager, presence:true
 	def self.latest_projects
-		order("created_at DESC").limit(9)
+		order("created_at DESC").where(created_at: Date.today-15.days..Date.today)
 	end
 	def self.select_managers_projects(user_id)
 		where(project_manager: user_id)

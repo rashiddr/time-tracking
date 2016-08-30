@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 	before_action :is_admin, except: [:latest_projects,:manage_projects,:remove_employe_from_project]
 	
 	def index
-		@project=Project.project_list
+		@project=Project.project_list.paginate(page:params[:page], per_page:6)
 	end
 	def new 	
 		@project=Project.new
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
 		redirect_to projects_path
 	end
 	def latest_projects #list latest projects
-		@projects=Project.latest_projects
+		@projects=Project.project_list.paginate(page:params[:page], per_page:6)
 	end
 	def manage_projects
 		if(!params[:user].blank?)

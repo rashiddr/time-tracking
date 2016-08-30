@@ -65,6 +65,9 @@ footer{
 input::-webkit-calendar-picker-indicator{
     display: none;
 }
-input[type="date"]::-webkit-input-placeholder{ 
+input[type=date]::-webkit-input-placeholder{ 
     visibility: hidden !important;
+}
+input[type=time]{
+    -webkit-appearance: none;
 }

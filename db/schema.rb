@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825092040) do
+ActiveRecord::Schema.define(version: 20160829033621) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "daily_status_id"
@@ -58,10 +58,11 @@ ActiveRecord::Schema.define(version: 20160825092040) do
   create_table "trainings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "trainer"
-    t.date     "training_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "training_datetime"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "location"
+    t.float    "duration",          limit: 24
   end
 
   create_table "user_projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

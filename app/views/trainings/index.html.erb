@@ -8,6 +8,7 @@
 						<td>Topic</td>
 						<td>Trainer</td>
 						<td>Date</td>
+						<td>Time</td>
 						<td>Location</td>
 						<td></td>
 						<td></td>
@@ -18,7 +19,8 @@
 						<tr>
 							<td><%= training.title %></td>
 							<td><%= training.trainer%></td>
-							<td><%= training.training_date %></td>
+							<td><%= training.training_datetime.to_date %></td>
+							<td><%= training_duration(training.training_datetime,training.duration) %></td>
 							<td><%= training.location %></td>
 							<td><%= link_to ('<span class="glyphicon glyphicon-pencil">Edit</span>').html_safe,edit_training_path(training) %></td>
 							<td><%= link_to ('<span class="glyphicon glyphicon-remove">Delete</span>').html_safe,training_path(training), method: :delete, data: { confirm: 'Are you sure?' },remote:true,class:'destroy_training' %></td>
@@ -26,6 +28,7 @@
 					<% end %>
 				</tbody>
 			</table>
+			<%= will_paginate @training %>
 		</div>
 		<h4><%= link_to 'Add New Training',new_training_path, class: "btn btn-primary" %></h4>
 	</div>
