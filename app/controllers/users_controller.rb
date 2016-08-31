@@ -18,9 +18,10 @@ class UsersController < ApplicationController
 	def update_profile
 		@user=User.find(current_user.id)
 		if(@user.update(user_params))
-			flash[:notice] = "Profile edited successfully"
+			flash[:success] = "Profile edited successfully"
   			redirect_to root_path
   		else
+  			flash.now[:error] = "Unable to update profile"
   			render 'edit_profile'
   		end
 	end

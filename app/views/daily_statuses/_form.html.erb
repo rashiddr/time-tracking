@@ -1,12 +1,12 @@
 
 <div class="row">
   <div class="col-md-12"> 
-    <% if @status.errors.any? %>
+    <% if @daily_status.errors.any? %>
           <h4>
-            <%= pluralize(@status.errors.count, "error") %> prohibited
+            <%= pluralize(@daily_status.errors.count, "error") %> prohibited
             this from being saved:
           </h4>
-          <% @status.errors.full_messages.each do |msg| %>
+          <% @daily_status.errors.full_messages.each do |msg| %>
             <div class="alert alert-danger fade in">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <%= msg %>
@@ -15,7 +15,7 @@
     <% end %>
   </div>
 </div>
-<%= form_for @status do |f| %>
+<%= form_for @daily_status do |f| %>
   <div class="row">
       <div class="col-md-4 col-xs-7 col-sm-5">
           <div class="field form-group">

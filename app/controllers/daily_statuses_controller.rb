@@ -2,29 +2,33 @@ class DailyStatusesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :is_admin, :only => [:verify_statuses]
 	def index
-		@status=DailyStatus.new()
-		@daily_status=DailyStatus.previous_statuses(current_user.id).paginate(page:params[:page], per_page:5)	
+		@daily_status=DailyStatus.new()
+		@status_history=DailyStatus.previous_statuses(current_user.id).paginate(page:params[:page], per_page:5)	
 	end
 	def new
-		@status=  DailyStatus.new()
+		@daily_status=  DailyStatus.new()
 	end
 	def create
 	 	@daily_status= DailyStatus.new(status_params)
 		@daily_status.user_id=current_user.id
 		if(@daily_status.save)
+			flash[:success]="Status submitted sucessfully"
 			redirect_to @daily_status
 		else
+			flash.now[:error] = "Unable to save project"
 			render 'new'
 		end
 	end
 	def edit
-		@status= DailyStatus.find(params[:id])
+		@daily_status= DailyStatus.find(params[:id])
 	end
 	def update
 		@daily_status= DailyStatus.find(params[:id]) 
 		if(@daily_status.update(status_params))
+			flash[:success]="Status updated sucessfully"
   			redirect_to @daily_status
   		else
+  			flash.now[:error] = "Unable to update project"
   			render 'edit'
   		end
 	end

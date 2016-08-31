@@ -11,8 +11,10 @@ class ProjectsController < ApplicationController
 	def create
 		@project = Project.new(project_params)
  		if(@project.save)
+ 			flash[:success]="Project created"
   			redirect_to @project
   		else
+  			flash.now[:error] = "Unable to save project"
   			render 'new'
   		end
   	end
@@ -22,8 +24,10 @@ class ProjectsController < ApplicationController
 	def update
 		@project= Project.find(params[:id])
 		if(@project.update(project_params))
+			flash[:success]="Project Updated"
   			redirect_to @project
   		else
+  			flash.now[:error] = "Unable to update project"
   			render 'edit'
   		end
   	end
@@ -33,6 +37,7 @@ class ProjectsController < ApplicationController
 	def destroy
 		@project=Project.find(params[:id])
 		@project.destroy
+		flash[:success]="Project deleted"
 		redirect_to projects_path
 	end
 	def latest_projects #list latest projects
@@ -54,6 +59,7 @@ class ProjectsController < ApplicationController
 	def remove_employe_from_project
 		@user=UserProject.find(params[:user_project_id])
 		@user.destroy
+		flash[:success]="Employe removed"
 		redirect_to(:back)
 	end
 	private

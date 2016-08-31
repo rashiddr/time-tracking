@@ -1,4 +1,4 @@
-<% @daily_status.each do |status| %>
+<% @status_history.each do |status| %>
 	<div class="panel panel-default">
 	  <div class="panel-body">
 	    	<div class="row">
@@ -28,4 +28,4 @@
 	  </div>
 	</div>
 <% end %>
-<%= will_paginate @daily_status %>
+<%= will_paginate @status_history %>

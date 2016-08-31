@@ -12,8 +12,10 @@ class TrainingsController < ApplicationController
  		if(@training.save)
  			SendInvitationMailJob.set(wait: 20.seconds).perform_later(@training)
  			session[:request_from] = 'create'
+ 			flash[:success]="Training created"
   			redirect_to @training
   		else
+  			flash.now[:error] = "Unable to save training"
   			render 'new'
   		end
   	end
@@ -26,8 +28,10 @@ class TrainingsController < ApplicationController
 		@training= Training.find(params[:id])
 		if(@training.update(training_params))
 			session[:request_from] = 'create'
+			flash[:success]="Training updated"
   			redirect_to @training
   		else
+  			flash.now[:error] = "Unable to update training"
   			render 'edit'
   		end
 	end

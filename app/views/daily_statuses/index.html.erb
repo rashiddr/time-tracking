@@ -20,17 +20,27 @@
 	  	dataType: 'html',
 	  	success: function(result){
 	  		if(result=='failed'){
-	  			alert("Status for this date and project already exists");
-	  			$("#submit-btn").prop('disabled', false);
-	  			$('form')[0].reset();
+	  			var n = noty({
+		  			text: 'Status for this project is already submited!',
+		  			layout: 'topRight',
+		  			type: 'error',
+		  			timeout: 3000
+			  	});
+	  			
 	  		}
 	  		else{
 		  		$("#status_index").prepend(result);
-		  		$("#submit-btn").prop('disabled', false);
-		  		$('form')[0].reset();
+		  		var n = noty({
+		  			text: 'Daily status addedd successfully!',
+		  			layout: 'topRight',
+		  			type: 'success',
+		  			timeout: 3000,
+			  	});
 	  		}
 	  	}
 	  });
+	  $("#submit-btn").prop('disabled', false);
+	  $('form')[0].reset();
 	});
 </script>
 
