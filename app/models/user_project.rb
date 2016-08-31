@@ -1,6 +1,6 @@
 class UserProject < ApplicationRecord
 	belongs_to:user
-	belongs_to:project, inverse_of: :user_projects
+	belongs_to:project,-> { with_deleted }, inverse_of: :user_projects
 	#validates :project_id, uniqueness: { scope: [:user_id] }
 	#validates :project_id, presence: true
 	validates :user_id, presence:true 

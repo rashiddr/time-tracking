@@ -1,14 +1,5 @@
 source 'https://rubygems.org'
-gem 'validates_timeliness'
-gem 'paperclip'
-gem 'autoprefixer-rails'
-gem 'bootstrap-sass'
-gem 'rails4-autocomplete'
-gem 'will_paginate', '~> 3.1.0'
-gem 'birthday', '~> 0.3.0'
-gem 'nested_form_fields'
-gem 'delayed_job_active_record'
-gem 'daemons'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 # Use mysql as the database for Active Record
@@ -37,7 +28,17 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'devise'
-
+gem 'validates_timeliness'
+gem 'paperclip'
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
+gem 'rails4-autocomplete'
+gem 'will_paginate', '~> 3.1.0'
+gem 'birthday', '~> 0.3.0'
+gem 'nested_form_fields'
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem "paranoia", github: "rubysherpas/paranoia", branch: "rails5"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

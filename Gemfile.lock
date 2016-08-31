@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rubysherpas/paranoia.git
+  revision: 70f6e37b7b32cf4f70c5b852a38597699f476c62
+  branch: rails5
+  specs:
+    paranoia (2.2.0.pre)
+      activerecord (>= 4.0, < 5.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -216,6 +224,7 @@ DEPENDENCIES
   mysql2 (>= 0.3.18, < 0.5)
   nested_form_fields
   paperclip
+  paranoia!
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails4-autocomplete

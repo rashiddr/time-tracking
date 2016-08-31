@@ -6,6 +6,7 @@ class Project < ApplicationRecord
     :foreign_key => "project_manager"
 	belongs_to :user, :foreign_key => :project_manager
 	accepts_nested_attributes_for :user_projects, allow_destroy: true
+	acts_as_paranoid #for soft delete
 	validates :project_name, presence: true, uniqueness: true, length: { maximum:25 }
 	validates :client, presence:true
 	validates :project_manager, presence:true

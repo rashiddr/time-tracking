@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829033621) do
+ActiveRecord::Schema.define(version: 20160831111302) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "daily_status_id"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20160829033621) do
     t.datetime "updated_at",                    null: false
     t.string   "project_name"
     t.integer  "project_manager"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_projects_on_deleted_at", using: :btree
   end
 
   create_table "trainings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

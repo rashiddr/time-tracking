@@ -32,6 +32,9 @@
 								<div class="col-md-12">
 									 <%= link_to ('<span class="glyphicon glyphicon-pencil">Edit</span>').html_safe,edit_project_path(project) %>
 								</div>
+								<div class="col-md-12">
+									 <%= link_to ('<span class="glyphicon glyphicon-remove">Delete</span>').html_safe,project_path(project), method: :delete, data: { confirm: 'Are you sure?' },remote:true,class:'destroy_project' %>
+								</div>
 							</div>
 						</td>
 					</tr>
