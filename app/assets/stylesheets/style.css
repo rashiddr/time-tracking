@@ -38,6 +38,11 @@ footer{
 .top-margin{
 	margin-top:60px;
 }
+.employe-heading,
+.employe-container{
+  margin-bottom: 40px;
+}
+
 .thumb_pic {
     height: 100px;
     border: 1px solid #000;

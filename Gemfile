@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+
 gem 'devise'
 gem 'validates_timeliness'
 gem 'paperclip'
@@ -39,6 +41,9 @@ gem 'nested_form_fields'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem "paranoia", github: "rubysherpas/paranoia", branch: "rails5"
+gem 'data-confirm-modal'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -16,6 +16,7 @@
 //= require nested_form_fields
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require data-confirm-modal
 //= require_tree .
 
 

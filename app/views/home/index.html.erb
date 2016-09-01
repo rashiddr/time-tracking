@@ -1,44 +1,48 @@
 
 <div class="row">
-  <div class="col-md-12"><h2>Dashboard</h2></div>
-  <div class="col-md-6 new_project">
-      <%= render "projects/list_projects" %>
-  </div>
-  <div class="col-md-6 world_clock hidden-xs hidden-sm">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><strong>World Clock</strong></h3>
+    <div class="col-md-12"><h2>Dashboard</h2></div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12 new_project">
+                <%= render "projects/list_projects" %>
             </div>
-            <div class="row">
-                <div class="col-md-12 clock_top">
-                    <div id="clock_india"></div>
-                    <div id="clock_poland"></div>
-                    <div id="clock_tokyo"></div>
-                </div>
+            <div class="col-md-12 upcoming_training">
+                <%= render "trainings/latest_training" %>
             </div>
-            <div class="row">
-                <div class="col-md-12 clock_bottom">
-                    <div id="clock_london"></div>
-                    <div id="clock_us"></div>
-                    <div id="clock_uk"></div>
-                </div>
+            <div class="col-md-12 upcoming_birthday">
+                <%= render template: "users/birthdays" %>
             </div>
-            
         </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6 upcoming_training">
-      <%= render "trainings/latest_training" %>
-  </div>
-  <div class="col-md-6 new_joiners">
-      <%= render template: "users/new_joiners" %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6 upcoming_birthday">
-      <%= render template: "users/birthdays" %>
-  </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12 world_clock hidden-xs hidden-sm">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>World Clock</strong></h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 clock_top">
+                            <div id="clock_india"></div>
+                            <div id="clock_poland"></div>
+                            <div id="clock_tokyo"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 clock_bottom">
+                            <div id="clock_london"></div>
+                            <div id="clock_us"></div>
+                            <div id="clock_uk"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-12 new_joiners">
+                <%= render template: "users/new_joiners" %>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--  script for world clock -->

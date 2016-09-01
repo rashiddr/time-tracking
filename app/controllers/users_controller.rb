@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 	def list_users
-		@user=User.all
+		@user=User.users_list
+		respond_to do |format|
+      		format.html
+      		format.js
+    end
 	end
 	def show
 		@user=User.find(params[:id])

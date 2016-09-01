@@ -11,7 +11,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  enum role: [:Manager, :employe]
+  enum role: [:Manager, :Employe]
   validates_with AttachmentSizeValidator, attributes: :user_pic, less_than: 3.megabytes
   validates :first_name, presence: true, length: { maximum:15 }
   validates :last_name, length: { maximum:15 }
@@ -21,7 +21,10 @@ class User < ApplicationRecord
   validates_date :dob, :on_or_before => lambda { Date.current - 15.years},
                  :on_or_before_message => 'must be atleast 15 years ago'
   def self.new_joiners
-    order("created_at DESC").limit(12)
+    where(created_at:Date.today - 20.days..Date.today)
+  end
+  def self.users_list
+    order("created_at DESC")
   end
   def self.birthday_ordered_asc
     find_dobs_for(Date.today, Date.today + 15.days).order("MONTH(dob) ASC","DAY(dob) ASC")
