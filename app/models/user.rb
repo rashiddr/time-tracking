@@ -43,7 +43,7 @@ class User < ApplicationRecord
   end
   private
     def default_values
-      self.role ||= "employe"
+      self.role ||= "Employe"
     end
 end
                  

@@ -19,6 +19,14 @@
 //= require data-confirm-modal
 //= require_tree .
 
+//code to make willpaginate link remote
+$(function() {
+   $(".employe-search-result").on("click", ".pagination a", function(){
+    $.getScript(this.href);
+    return false;
+  });
+});
+
 
 
 

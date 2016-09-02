@@ -42,6 +42,13 @@ footer{
 .employe-container{
   margin-bottom: 40px;
 }
+.sort-container{
+  border:1px solid #EEEEEE;
+  background-color: #EEEEEE;
+  border-radius: 5px;
+  margin:0 0 10px 15px;
+  padding: 0px 10px 10px 10px;
+}
 
 .thumb_pic {
     height: 100px;

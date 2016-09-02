@@ -56,6 +56,13 @@ class ProjectsController < ApplicationController
 			@project=Project.find(params[:selected_project][:ids])
 		end
 	end	
+	def auto_complete_projects
+		@project=Project.where("project_name LIKE ?","#{params[:term]}%")
+		respond_to do |format|  
+    		format.html
+    		format.json { render json: @project.map{|x| {label:x.project_name,value:x.id} } }
+    	end
+	end
 	def remove_employe_from_project
 		@user=UserProject.find(params[:user_project_id])
 		@user.destroy

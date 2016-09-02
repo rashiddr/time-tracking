@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'latest_projects'
       get 'manage_projects'
       get 'remove_employe_from_project'
+      get 'projects/auto_complete_projects'
     end
   end
   resources :trainings do
