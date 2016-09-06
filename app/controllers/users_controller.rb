@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 	def list_users
-		if(params[:project_id].blank?)
-			@user=User.users_list.paginate(page:params[:page], per_page:10)
-		else
+		if(!params[:project_id].blank?)
 			@project=Project.find(params[:project_id])
-			@user=@project.users.paginate(page:params[:page], per_page:10)
+			@user=@project.users.paginate(page:params[:page], per_page:12)
+		elsif(!params[:user_id].blank?)
+			@user=User.select_user(params[:user_id]).paginate(page:params[:page], per_page:12)
+		elsif(!params[:employe_name].blank?)
+			@user=User.search_users(params[:employe_name]).paginate(page:params[:page], per_page:12)
+		else
+			@user=User.users_list.paginate(page:params[:page], per_page:12)
 		end
 	end
 	def show
@@ -33,6 +37,13 @@ class UsersController < ApplicationController
   			flash.now[:error] = "Unable to update profile"
   			render 'edit_profile'
   		end
+	end
+	def auto_complete_users
+		@user=User.auto_complete_user(params[:term])
+		respond_to do |format|  
+    		format.html
+    		format.json { render json: @user.map{|x| {label:x.first_name,value:x.id} } }
+    	end
 	end
 	private
 	def user_params

@@ -2,15 +2,6 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
-Rails.application.config.assets.precompile += %w( jquery-ui.css )
-Rails.application.config.assets.precompile += %w( jquery-ui.js )
-Rails.application.config.assets.precompile += %w( autocomplete-rails.js )
-Rails.application.config.assets.precompile += %w( style.css )
-Rails.application.config.assets.precompile += %w( jClocksGMT.css )
-Rails.application.config.assets.precompile += %w( jquery.rotate.js )
-Rails.application.config.assets.precompile += %w( jClocksGMT.js )
-Rails.application.config.assets.precompile += %w( jquery-1.9.1.js )
-Rails.application.config.assets.precompile += %w( nav-style.css )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

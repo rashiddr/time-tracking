@@ -52,5 +52,5 @@ test:
 production:
   <<: *default
   database: time_tracking_tool_production
-  username: time_tracking_tool
+  username: root
   password: <%= ENV['TIME_TRACKING_TOOL_DATABASE_PASSWORD'] %>

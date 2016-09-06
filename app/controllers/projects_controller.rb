@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
 		end
 	end	
 	def auto_complete_projects
-		@project=Project.where("project_name LIKE ?","#{params[:term]}%")
+		@project=Project.auto_complete_project(params[:term])
 		respond_to do |format|  
     		format.html
     		format.json { render json: @project.map{|x| {label:x.project_name,value:x.id} } }

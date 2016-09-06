@@ -31,7 +31,7 @@
         </div>
     </header>  
     <% if user_signed_in? %>
-        <% if current_user.role =='employe'%>
+        <% if current_user.role =='Employe'%>
             <%= render 'layouts/employe_nav'%>
          <%else%>
             <%= render 'layouts/admin_nav' %>
