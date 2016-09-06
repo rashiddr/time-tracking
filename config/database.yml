@@ -16,7 +16,7 @@ default: &default
   pool: 5
   username: root
   password: qburst
-  host: localhost
+  host: 127.0.0.1
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -51,6 +51,6 @@ test:
 #
 production:
   <<: *default
-  database: time_tracking_tool_production
+  database: time_tracking_tool_development
   username: root
-  password: <%= ENV['TIME_TRACKING_TOOL_DATABASE_PASSWORD'] %>
+  password: qburst
