@@ -45,8 +45,25 @@ class UsersController < ApplicationController
     		format.json { render json: @user.map{|x| {label:x.first_name,value:x.id} } }
     	end
 	end
+	def change_logo
+		@user=User.find(current_user.id)
+	end
+	def update_logo
+		@user=User.find(current_user.id)
+		if params[:user].present?
+			if(@user.update(user_params))
+				flash[:success] = "logo edited successfully"
+	  			redirect_to root_path
+	  		else
+	  			flash.now[:error] = "Unable to update logo"
+	  			render 'change_logo'
+	  		end
+	  	else
+	  		redirect_to root_path
+	  	end
+	end
 	private
 	def user_params
-    	params.require(:user).permit(:user_pic,:first_name, :last_name, :place, :dob, :username, :email, :project_id)
+    	params.require(:user).permit(:user_pic,:logo,:first_name, :last_name, :place, :dob, :username, :email, :project_id)
   	end 
 end

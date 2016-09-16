@@ -16,7 +16,7 @@ default: &default
   pool: 5
   username: root
   password: qburst
-  host: 127.0.0.1
+  host: localhost
   socket: /var/run/mysqld/mysqld.sock
 
 development:

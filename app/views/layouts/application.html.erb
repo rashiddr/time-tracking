@@ -18,9 +18,11 @@
         <div class="container-fluid">
             <div class="row"> 
                 <div class="col-md-10 col-xs-12" >
-                    <%= link_to root_path, :class => "logo_link" do %>
-                        <%= image_tag("logo.png", :alt => "logo", :class => "logo") %>
-                    <% end %>
+                    <% if user_signed_in? %>
+                        <%= link_to users_change_logo_path, :class => "logo_link" do %>
+                            <%= image_tag current_user.logo.url(:thumb),class:'logo' %>
+                        <% end %>
+                    <%end%>
                 </div>
                 <div class="col-md-2 col-xs-12 pull-right">
                     <% if user_signed_in? %>

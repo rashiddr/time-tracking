@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   
   devise_for :users,controllers: {registrations: 'registrations'}
   get 'users/auto_complete_users'
+  get 'users/change_logo'
+  post 'users/update_logo',to: 'users#update_logo', as: 'update_logo'
   get 'users/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
   post 'users/update_profile', to: 'users#update_profile', as: 'update_profile'
   get 'users/list_users', to: 'users#list_users', as: 'list_users'
