@@ -28,7 +28,7 @@ class User < ApplicationRecord
     order("created_at DESC")
   end
   def self.birthday_ordered_asc
-    find_dobs_for(Date.today, Date.today + 15.days).order("MONTH(dob) ASC","DAY(dob) ASC")
+    find_dobs_for(Date.today, Date.today + 15.days).order("EXTRACT(MONTH FROM dob) ASC","EXTRACT(DAY FROM dob) ASC")
   end  
   def self.add_admins(user_id)
     where(id: user_id).update_all(role: 0)
