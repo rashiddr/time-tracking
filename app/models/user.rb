@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   after_initialize :default_values
   acts_as_birthday :dob #for birthday
-  has_many:user_projects
+  has_many:user_projects, dependent: :destroy
   has_many:projects, through: :user_projects
-  has_many:daily_statuses
+  has_many:daily_statuses,dependent: :destroy
   has_many:comments
   has_attached_file :logo,styles: { medium: "300x300>", thumb: "100x100>" },default_url: "/images/logo_:style.png"
   has_attached_file :user_pic, styles: { medium: "300x300#", thumb: "100x100#", smallthumb: "34x34#" }, default_url: "/images/default_:style.png"
