@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many:projects, through: :user_projects
   has_many:daily_statuses,dependent: :destroy
   has_many:comments
-  has_attached_file :logo,styles: { medium: "300x300>", thumb: "100x100>" },default_url: "/images/logo_:style.png"
+  has_attached_file :logo,styles: { medium: "300x300>", thumb: "100x100>" },default_url: "/images/logo_white_:style.png"
   has_attached_file :user_pic, styles: { medium: "300x300#", thumb: "100x100#", smallthumb: "34x34#" }, default_url: "/images/default_:style.png"
   validates_attachment_content_type :user_pic, content_type: /\Aimage\/.*\Z/
   # Include default devise modules. Others available are:
