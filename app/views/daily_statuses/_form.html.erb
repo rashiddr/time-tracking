@@ -20,7 +20,7 @@
       <div class="col-md-4 col-xs-7 col-sm-5">
           <div class="field form-group">
               <%= f.label :Date, class: "control-label" %><br>
-              <%= f.date_field :status_date, autofocus: true, required: true,class:'form-control'%>
+              <%= f.date_field :status_date, required: true,class:'form-control'%>
           </div>    
       </div>
       <div class="col-md-4 col-xs-7 col-sm-5">
@@ -32,7 +32,7 @@
       <div class="col-md-4 col-xs-5 col-sm-2">
           <div class="field form-group">
               <%= f.label :Duration, class: "control-label" %><br>
-              <%= f.number_field :duration, in: 1.0..20.0, step: 0.5, value:'8',autofocus: true, required: true, class:'form-control' %>
+              <%= f.number_field :duration, in: 1.0..20.0, step: 0.5, value:'8', required: true, class:'form-control' %>
           </div>
       </div>
   </div>
@@ -40,7 +40,7 @@
       <div class="field col-md-6 col-xs-12 col-sm-8">
         <div class="form-group">
           <%= f.label :Activities, class: "control-label"  %><br>
-          <%= f.text_area :work_done, autofocus: true, size: "40x5",required: true,class: 'form-control',maxlength:'180' %>
+          <%= f.text_area :work_done, autofocus: true, size: "40x5",required: true,class: 'form-control',maxlength:'180',tabindex: 1 %>
           <span id="characters"><span>
         </div>
       </div>
@@ -53,9 +53,12 @@
       </div>
   </div>
 <% end %>
-<!-- Script for Date picker  -->
+    
+
 <script>
-    $( function() {
+  $(document).on('turbolinks:load', function() {
+    
+  
       $( "#daily_status_status_date" ).datepicker({
               changeMonth:true,
               changeYear:true,
@@ -63,16 +66,18 @@
               maxDate: 0,
               minDate: ('-7D')
       });
-    } );
-</script>
-<!-- Script for Reamining word count  -->
-<script>
+   
+
+
       $('textarea').keyup(updateCount);
       $('textarea').keydown(updateCount);
       function updateCount() {
           var cs = $(this).val().length;
           $('#characters').text(180-cs);
       }
+   });
 </script>
+
+
 
   

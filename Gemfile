@@ -43,6 +43,7 @@ gem 'daemons'
 gem "paranoia", github: "rubysherpas/paranoia", branch: "rails5"
 gem 'data-confirm-modal'
 gem 'pg'
+gem 'lol_dba'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 	def list_users
-		if(!params[:project_id].blank?)
+		if(!params[:user_id].blank?)#Employe name selected
+			@user=User.select_user(params[:user_id]).paginate(page:params[:page], per_page:12)
+		elsif(!params[:project_id].blank?&&!params[:employe_name].blank?)#project selected and name not fully entered 
+			@project=Project.find(params[:project_id])
+			@user=@project.users.search_users(params[:employe_name]).paginate(page:params[:page], per_page:12)
+		elsif(!params[:project_id].blank?)#only project selected
 			@project=Project.find(params[:project_id])
 			@user=@project.users.paginate(page:params[:page], per_page:12)
-		elsif(!params[:user_id].blank?)
-			@user=User.select_user(params[:user_id]).paginate(page:params[:page], per_page:12)
-		elsif(!params[:employe_name].blank?)
+		elsif(!params[:employe_name].blank?)#no project selected and partial name entered
 			@user=User.search_users(params[:employe_name]).paginate(page:params[:page], per_page:12)
-		else
+		else#both fields blank
 			@user=User.users_list.paginate(page:params[:page], per_page:12)
 		end
 	end
@@ -39,10 +42,10 @@ class UsersController < ApplicationController
   		end
 	end
 	def auto_complete_users
-		@user=User.auto_complete_user(params[:term])
+		@user=User.search_users(params[:term])
 		respond_to do |format|  
     		format.html
-    		format.json { render json: @user.map{|x| {label:x.first_name,value:x.id} } }
+    		format.json { render json: @user.map{|x| {label:"#{x.first_name} #{x.last_name}",value:x.id } } }
     	end
 	end
 	def change_logo

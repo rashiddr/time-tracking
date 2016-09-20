@@ -19,7 +19,4 @@ class Project < ApplicationRecord
 	def self.project_list
 		includes(:project_head).all.order("created_at DESC")
 	end
-	def self.auto_complete_project(pattern)
-		where("project_name LIKE ?","#{pattern}%")
-	end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913073335) do
+ActiveRecord::Schema.define(version: 20160919100625) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "daily_status_id"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20160913073335) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.boolean  "checked",                   default: false
+    t.index ["project_id"], name: "index_daily_statuses_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_daily_statuses_on_user_id", using: :btree
   end
 
   create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160913073335) do
     t.integer  "project_manager"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_projects_on_deleted_at", using: :btree
+    t.index ["project_manager"], name: "index_projects_on_project_manager", using: :btree
   end
 
   create_table "trainings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -72,6 +75,8 @@ ActiveRecord::Schema.define(version: 20160913073335) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_user_projects_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_user_projects_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -110,6 +115,7 @@ ActiveRecord::Schema.define(version: 20160913073335) do
     t.datetime "logo_updated_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["first_name", "last_name"], name: "index_users_on_first_name_and_last_name", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end

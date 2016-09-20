@@ -42,14 +42,11 @@ class User < ApplicationRecord
   def self.select_trainees
     order("created_at DESC").limit(5);
   end
-  def self.auto_complete_user(pattern)
-    where("first_name LIKE ?","#{pattern}%")
-  end
   def self.search_users(pattern)
-      where("first_name LIKE ? or last_name LIKE ? or concat(first_name, ' ', last_name) LIKE ?", "%#{pattern}%", "%#{pattern}%" , "%#{pattern}%")
+    where("first_name LIKE ? or last_name LIKE ? or concat(first_name, ' ', last_name) LIKE ?", "#{pattern}%", "#{pattern}%" , "#{pattern}%")
   end
   def self.select_user(user_id)
-      where(id:user_id)
+    where(id:user_id)
   end
   private
     def default_values

@@ -45,9 +45,7 @@ class DailyStatusesController < ApplicationController
 	    	else
 	    		result = 'failed'
 	    		render json:result
-	    	end
-		else            # respond to normal request
-		 	
+	    	end	
 		end
 	end
   	def verify_statuses #manager to view daily status of all employe
