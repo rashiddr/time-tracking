@@ -12,6 +12,12 @@ class ApplicationController < ActionController::Base
     flash[:warning]="You must confirm your mail first"
     new_user_session_path 
   end
+  def complete_profile
+    if !current_user.profile_completion?
+      flash[:warning]="Please complete your profile"
+      redirect_to edit_profile_path
+    end
+  end
   def after_sign_in_path_for(resource)
     if current_user.role == "Manager" 
       flash[:success]="Signed in as admin"

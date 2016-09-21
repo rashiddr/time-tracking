@@ -15,11 +15,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook,:google_oauth2]
   enum role: [:Manager, :Employe]
   validates_with AttachmentSizeValidator, attributes: :user_pic, less_than: 3.megabytes
-  validates :first_name, presence: true, length: { maximum:40 }
+  validates :first_name, presence: true, length: { maximum:25 }
   validates :last_name, length: { maximum:15 }
   validates :place, presence:true, length: { maximum:15 }, unless: :omni_auth
   validates :dob, presence:true, unless: :omni_auth
-  validates :username, presence:true, uniqueness: true, length: { maximum:15 }, unless: :omni_auth
+  validates :username, presence:true,length: { maximum:30 }, unless: :omni_auth
   validates_date :dob, on_or_before: lambda { Date.current - 15.years},
                   on_or_before_message:'must be atleast 15 years ago',
                   unless: :omni_auth
@@ -28,6 +28,9 @@ class User < ApplicationRecord
   end
   def self.users_list
     order("created_at DESC")
+  end
+  def self.profile_completed(user_id)
+    find(user_id).update(profile_completion: true)
   end
   def self.birthday_ordered_asc
     find_dobs_for(Date.today, Date.today + 15.days).order("EXTRACT(MONTH FROM dob) ASC","EXTRACT(DAY FROM dob) ASC")

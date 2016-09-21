@@ -34,8 +34,13 @@ class UsersController < ApplicationController
 	def update_profile
 		@user=User.find(current_user.id)
 		if(@user.update(user_params))
-			flash[:success] = "Profile edited successfully"
-  			redirect_to root_path
+			if(User.profile_completed(current_user.id))
+				flash[:success] = "Profile edited successfully"
+  				redirect_to root_path
+  			else
+  				flash[:success] = "Sorry,something went wrong"
+  				render 'edit_profile'
+  			end
   		else
   			flash.now[:error] = "Unable to update profile"
   			render 'edit_profile'
