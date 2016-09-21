@@ -15,14 +15,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook,:google_oauth2]
   enum role: [:Manager, :Employe]
   validates_with AttachmentSizeValidator, attributes: :user_pic, less_than: 3.megabytes
-  # validates :first_name, presence: true, length: { maximum:40 }
-  # validates :last_name, length: { maximum:15 }
-  # validates :place, presence:true, length: { maximum:15 }, unless: :omni_auth
-  # validates :dob, presence:true, unless: :omni_auth
-  # validates :username, presence:true, uniqueness: true, length: { maximum:15 }, unless: :omni_auth
-  # validates_date :dob, on_or_before: lambda { Date.current - 15.years},
-  #                 on_or_before_message:'must be atleast 15 years ago',
-  #                 unless: :omni_auth
+  validates :first_name, presence: true, length: { maximum:40 }
+  validates :last_name, length: { maximum:15 }
+  validates :place, presence:true, length: { maximum:15 }, unless: :omni_auth
+  validates :dob, presence:true, unless: :omni_auth
+  validates :username, presence:true, uniqueness: true, length: { maximum:15 }, unless: :omni_auth
+  validates_date :dob, on_or_before: lambda { Date.current - 15.years},
+                  on_or_before_message:'must be atleast 15 years ago',
+                  unless: :omni_auth
   def self.new_joiners
     where(created_at:Date.today - 20.days..Date.today)
   end
