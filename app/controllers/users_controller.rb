@@ -70,8 +70,20 @@ class UsersController < ApplicationController
 	  		redirect_to root_path
 	  	end
 	end
+	def location
+		@user=User.new
+	end
+	def update_location
+		if current_user.update(place_id: params[:place_id])
+			flash[:success]="Current location updated successfully"
+			redirect_to root_path
+		else
+			flash[:error]="Unable to update location"
+			render 'location'
+		end
+	end
 	private
 	def user_params
-    	params.require(:user).permit(:user_pic,:logo,:first_name, :last_name, :place, :dob, :username, :email, :project_id)
+    	params.require(:user).permit(:user_pic,:logo,:first_name, :last_name, :place, :dob, :username, :email, :project_id,:place_id)
   	end 
 end

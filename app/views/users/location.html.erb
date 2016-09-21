@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-md-4">
+			<%= label_tag 'Current location'%>
+			<%= text_field_tag :user_location,nil, class:'form-control', id:'user_location' %>
+			<%= form_tag users_update_location_path,class:'current_location', method:'post' do |f| %>
+				<%= hidden_field_tag :place_id,params[:place_id],class:'current_location'%>
+				<%= submit_tag 'Update location',class:'btn btn-primary form-control input-padding' %>
+			<%end%>
+	</div>
+	<div class="col-md-8" id="location-map">
+
+	</div>
+</div>
+<script>
+	$("#user_location").geocomplete({
+		map: '#location-map',
+		details: 'form' 
+	});
+</script>
