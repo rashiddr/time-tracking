@@ -4,9 +4,10 @@
     <div class="col-md-11"><h2>Sign up</h2></div>
      
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {'data-toggle': 'validator', role: 'form'}) do |f| %>
-        <%= devise_error_messages! %>
+        
         <div class="col-md-1"></div>
         <div class="col-md-4">
+            <%= devise_error_messages! %>
             <div class="form-group has-feedback">
               <%= f.label :Firstname, class: "control-label" %><br />
               <%= f.text_field :first_name, autofocus: true, :required => true,class:'form-control',data: { error: "First name required"}%>
