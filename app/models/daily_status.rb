@@ -7,9 +7,7 @@ class DailyStatus < ApplicationRecord
   	validates :duration, presence:true
   	validates :work_done, presence:true
   	validates_date :status_date, :on_or_before => lambda { Date.current },
-                                 :on_or_before_message => 'must be less than or equal to today',
-							 	 :on_or_after => lambda { 7.days.ago },
-							 	 :on_or_after_message => " must be after #{Date.today - 7.days} "
+                                 :on_or_before_message => 'must be less than or equal to today'
 
 	def self.previous_statuses(current_user_id)
 		includes(:project).where(user_id:current_user_id).order("created_at DESC")

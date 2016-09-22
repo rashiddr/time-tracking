@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
-	has_many:users, through: :user_projects
-	has_many:user_projects
-	has_many:daily_statuses
+	has_many :users, through: :user_projects
+	has_many :user_projects
+	has_many :daily_statuses
 	belongs_to :project_head, :class_name => "User",
     :foreign_key => "project_manager"
 	belongs_to :user, :foreign_key => :project_manager

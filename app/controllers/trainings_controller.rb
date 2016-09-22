@@ -9,6 +9,7 @@ class TrainingsController < ApplicationController
 	end
 	def create
 		@training = Training.new(training_params)
+		@training.current_user=current_user
  		if(@training.save)
  			SendInvitationMailJob.set(wait: 20.seconds).perform_later(@training)
  			session[:request_from] = 'create'
@@ -26,6 +27,7 @@ class TrainingsController < ApplicationController
 	end
 	def update
 		@training= Training.find(params[:id])
+		@training.current_user=current_user
 		if(@training.update(training_params))
 			session[:request_from] = 'create'
 			flash[:success]="Training updated"

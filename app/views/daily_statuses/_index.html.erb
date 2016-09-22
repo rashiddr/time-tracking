@@ -6,10 +6,15 @@
 	    			<p><%= status.status_date %></p>
 	    		</div>
 	    		<div class="col-md-2 col-sm-4">
+	    			<p>Updated at:</p>
+	    			<p><%= status.updated_at.strftime('%d-%m-%Y')%></p>
+	    			<p><%= status.updated_at.strftime('%I:%M %p')%></p>
+	    		</div>
+	    		<div class="col-md-2 col-sm-4">
 	    			<p><%= status.project.project_name%></p>
 	    			<p><%= status.duration %> hours</p>
 	    		</div>
-	    		<div class="col-md-7 col-sm-12">
+	    		<div class="col-md-5 col-sm-12">
 	    			<p><%= status.work_done %></p>
 	    		</div>
 	    		<div class="col-md-1 col-sm-1 col-xs-12">

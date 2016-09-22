@@ -1,6 +1,6 @@
 class Training < ApplicationRecord
 	before_save :set_training_datetime
-	attr_accessor :training_time, :training_date
+	attr_accessor :training_time, :training_date, :current_user
 	validates :title, presence: true, length: { maximum:25 }
 	validates :trainer, presence:true
 	validates :training_date, presence:true
@@ -18,7 +18,7 @@ class Training < ApplicationRecord
 	end
 	def set_training_datetime
 	    if training_date.present? && training_time.present?
-	      self.training_datetime="#{training_date} #{training_time}".to_datetime
+	      self.training_datetime="#{training_date} #{training_time}".to_datetime.in_time_zone(current_user.location.time_zone)
 	    end
   	end
 end
