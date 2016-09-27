@@ -30,6 +30,9 @@ class User < ApplicationRecord
   def self.users_list
     order("created_at DESC")
   end
+  def self.select_users_with_location
+    where(id: Location.pluck(:user_id))
+  end
   def self.profile_completed(user_id)
     find(user_id).update(profile_completion: true)
   end

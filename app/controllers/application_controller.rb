@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  around_filter :set_time_zone
+  around_action :set_time_zone
   def set_time_zone(&block)
       if user_signed_in?
           time_zone = current_user.location.try(:time_zone) || 'UTC'
       else
-           time_zone ='UTC'
+          time_zone ='UTC'
       end
       Time.use_zone(time_zone, &block)
   end
@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
     if !current_user.profile_completion?
       flash[:warning]="Please complete your profile"
       redirect_to edit_profile_path
+    end
+  end
+  def save_location
+    if !current_user.location.present?
+      redirect_to user_location_set_location_path
     end
   end
   def after_sign_in_path_for(resource)

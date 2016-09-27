@@ -1,6 +1,6 @@
 class DailyStatusesController < ApplicationController
 	before_action :authenticate_user!
-	before_action :is_admin, :only => [:verify_statuses]
+	before_action :is_admin, only: [:verify_statuses]
 	def index
 		@daily_status=DailyStatus.new()
 		@status_history=DailyStatus.previous_statuses(current_user.id).paginate(page:params[:page], per_page:5)	

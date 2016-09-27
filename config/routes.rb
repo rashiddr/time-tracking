@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   
   devise_for :users,controllers: {registrations: 'registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
   get 'user_location/change_location'
+  get 'user_location/index'
+  get 'user_location/set_location'
   get 'users/auto_complete_users'
   get 'users/change_logo'
   post 'users/update_logo',to: 'users#update_logo', as: 'update_logo'

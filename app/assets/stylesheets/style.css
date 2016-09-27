@@ -83,4 +83,10 @@ input[type=date]::-webkit-input-placeholder{
 input[type=time]{
     -webkit-appearance: none;
 }
-
+#dialog{
+  display: none;
+}
+.users_location_map
+{
+  height:450px;
+}

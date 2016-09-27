@@ -1,21 +1,29 @@
 <div class="row">
 	<div class="col-md-4">
-			<%= label_tag 'Current location'%>
-			<%= form_tag user_location_update_location_path, method:'post' do %>
-				<%= text_field_tag :place_name,@location.place_name, class:'form-control', id:'user_location' %>
-				<%= hidden_field_tag :place_id,@location.place_id %>
-				<%= hidden_field_tag :lat,@location.latitude %>
-				<%= hidden_field_tag :lng,@location.longitude %>
-				<%= submit_tag 'Update location',class:'btn btn-primary form-control input-padding' %>
-			<%end%>
+		<%= label_tag 'Current location'%>
+		<%= form_tag user_location_update_location_path, method:'post' do %>
+			<%= text_field_tag :place_name,@location.place_name, class:'form-control', id:'user_location' %>
+			<%= hidden_field_tag :place_id,@location.place_id %>
+			<%= hidden_field_tag :lat,@location.latitude %>
+			<%= hidden_field_tag :lng,@location.longitude %>
+			<%= submit_tag 'Update location',class:'btn btn-primary form-control input-padding' %>
+		<%end%>
 	</div>
-	<div class="col-md-8" id="location-map">
-
+	<div class="col-md-8">
+		<div id="location-map"></div>
 	</div>
 </div>
 <script>
+	<% if(current_user.location.present?) %>
+		var latitude= <%=current_user.location.latitude%>
+		var longitude = <%=current_user.location.longitude%>
+	    var current_location= [latitude,longitude]
+	<% else %>
+	 	current_location=[0,0]
+	<% end %>
 	$("#user_location").geocomplete({
 		map: '#location-map',
-		details: 'form' 
+		details: 'form',
+		location: current_location
 	});
 </script>

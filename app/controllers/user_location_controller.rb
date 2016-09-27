@@ -1,4 +1,12 @@
 class UserLocationController < ApplicationController
+	before_action :authenticate_user!
+	before_action :is_admin, only:[:index]
+	def index
+		@users=User.select_users_with_location()
+	end
+	def set_location
+		@location=Location.new
+	end
 	def change_location
 		@location=Location.find_or_create_by(user_id:current_user.id)
 	end

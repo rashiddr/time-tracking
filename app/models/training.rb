@@ -11,14 +11,15 @@ class Training < ApplicationRecord
 							 	 :after_message => "must be after #{Date.today} "
 
 	def self.latest_training
-		where(training_datetime: Date.today..Date.today + 10.days).order("created_at DESC")
+		where(training_datetime: Date.today..Date.today + 20.days).order("created_at DESC")
 	end
 	def self.all_training
 		where("training_datetime > ?",Date.today).order("created_at DESC")
 	end
 	def set_training_datetime
 	    if training_date.present? && training_time.present?
-	      self.training_datetime="#{training_date} #{training_time}".to_datetime.in_time_zone(current_user.location.time_zone)
+	    	Time.zone=current_user.location.time_zone
+	        self.training_datetime=Time.zone.parse("#{training_date} #{training_time}")
 	    end
   	end
 end
