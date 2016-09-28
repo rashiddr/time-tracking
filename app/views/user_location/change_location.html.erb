@@ -23,7 +23,13 @@
 	<% end %>
 	$("#user_location").geocomplete({
 		map: '#location-map',
+		mapOptions: {
+    		zoom: 10,
+    		scrollwheel: true
+  		},
 		details: 'form',
 		location: current_location
 	});
+
+
 </script>

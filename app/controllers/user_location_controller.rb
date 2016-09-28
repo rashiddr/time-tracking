@@ -9,6 +9,10 @@ class UserLocationController < ApplicationController
 	end
 	def change_location
 		@location=Location.find_or_create_by(user_id:current_user.id)
+		respond_to do |format|
+      		format.html
+      		format.js
+      	end
 	end
 	def update_location
 		@location=Location.find_or_create_by(user_id:current_user.id)

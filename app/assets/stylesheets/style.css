@@ -90,3 +90,6 @@ input[type=time]{
 {
   height:450px;
 }
+.gm-style{
+  z-index: 99999;
+}

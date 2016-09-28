@@ -1,0 +1,23 @@
+$("#modal-window-map").modal({backdrop: true}).html("<%= escape_javascript(render 'user_location/change_location') %>");
+<% if(current_user.location.present?) %>
+  var latitude= <%=current_user.location.latitude%>
+  var longitude = <%=current_user.location.longitude%>
+  var current_location= [latitude,longitude]
+<% else %>
+  current_location=[0,0]
+<% end %>
+$("#user_location").geocomplete({
+	map: '#location-map',
+	mapOptions: {
+    		zoom: 10,
+    		scrollwheel: true
+  	},
+	details: 'form',
+	location: current_location
+});
+
+$('#modal-window-map').on('shown.bs.modal', function(){
+	var map = $("#user_location").geocomplete("map");
+	google.maps.event.trigger(map, 'resize');
+	map.setCenter(new google.maps.LatLng(latitude,longitude));
+});
